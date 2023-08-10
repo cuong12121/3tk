@@ -360,7 +360,7 @@
                                             <picture>
                                                 <source srcset="{{ asset(strtolower($datas->Image)) }}" type="image/webp">
                                                 <source srcset="{{ asset(strtolower($datas->Image)) }}" type="image/jpeg">
-                                                <img loading="lazy" src="{{ asset($datas->Image) }}" alt="{{ $datas->Name }}">
+                                                <img loading="lazy" src="{{ asset(strtolower($datas->Image)) }}" alt="{{ $datas->Name }}">
                                                 <span class="product-item-view product-item-view-1752" style="display:none;"></span>
                                             </picture>
                                         </div>
