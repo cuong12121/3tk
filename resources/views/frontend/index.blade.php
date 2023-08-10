@@ -509,10 +509,10 @@
                         <div class="img">
                             <a href="tin-tuc/cac-moi-nguy-hiem-co-the-xay-ra-trong-moi-truong-dien-41214.html" title="CÁC MỐI NGUY HIỂM CÓ THỂ XẢY RA TRONG MÔI TRƯỜNG ĐIỆN" data-id="15471">
                                 <div class="mobile-hide" style="height:350px; overflow:hidden;">
-                                    <img src="Images/New/HQ%205.jpg" alt="CÁC MỐI NGUY HIỂM CÓ THỂ XẢY RA TRONG MÔI TRƯỜNG ĐIỆN" width="100%">
+                                    <img src="images/New/HQ%205.jpg" alt="CÁC MỐI NGUY HIỂM CÓ THỂ XẢY RA TRONG MÔI TRƯỜNG ĐIỆN" width="100%">
                                 </div>
                                 <div class="mobile-block" style="height:55px; overflow:hidden;">
-                                    <img src="Images/New/HQ%205.jpg" alt="CÁC MỐI NGUY HIỂM CÓ THỂ XẢY RA TRONG MÔI TRƯỜNG ĐIỆN" width="100%">
+                                    <img src="images/New/HQ%205.jpg" alt="CÁC MỐI NGUY HIỂM CÓ THỂ XẢY RA TRONG MÔI TRƯỜNG ĐIỆN" width="100%">
                                 </div>
                             </a>
                         </div>
@@ -525,10 +525,10 @@
                         <div class="img">
                             <a href="tin-tuc/khat-quat-chung-ve-mu-bao-ho-lao-dong-41204.html" title="KHÁT QUÁT CHUNG VỀ MŨ BẢO HỘ LAO ĐỘNG" data-id="15412">
                                 <div class="mobile-hide" style="height:80px; overflow:hidden;">
-                                    <img src="Images/New/3tk%20%284%29.png" alt="KHÁT QUÁT CHUNG VỀ MŨ BẢO HỘ LAO ĐỘNG" width="100%">
+                                    <img src="images/New/3tk%20%284%29.png" alt="KHÁT QUÁT CHUNG VỀ MŨ BẢO HỘ LAO ĐỘNG" width="100%">
                                 </div>
                                 <div class="mobile-block" style="height:55px; overflow:hidden;">
-                                    <img src="Images/New/3tk%20%284%29.png" alt="KHÁT QUÁT CHUNG VỀ MŨ BẢO HỘ LAO ĐỘNG" width="100%">
+                                    <img src="images/New/3tk%20%284%29.png" alt="KHÁT QUÁT CHUNG VỀ MŨ BẢO HỘ LAO ĐỘNG" width="100%">
                                 </div>
                             </a>
                         </div>
@@ -541,10 +541,10 @@
                         <div class="img">
                             <a href="tin-tuc/top-5-doi-giay-bao-ho-cach-dien-tot-nhat-hien-nay--41194.html" title="TOP 5 ĐÔI GIÀY BẢO HỘ CÁCH ĐIỆN TỐT NHẤT HIỆN NAY " data-id="15412">
                                 <div class="mobile-hide" style="height:80px; overflow:hidden;">
-                                    <img src="Images/New/3tk%20%282%29.png" alt="TOP 5 ĐÔI GIÀY BẢO HỘ CÁCH ĐIỆN TỐT NHẤT HIỆN NAY " width="100%">
+                                    <img src="images/New/3tk%20%282%29.png" alt="TOP 5 ĐÔI GIÀY BẢO HỘ CÁCH ĐIỆN TỐT NHẤT HIỆN NAY " width="100%">
                                 </div>
                                 <div class="mobile-block" style="height:55px; overflow:hidden;">
-                                    <img src="Images/New/3tk%20%282%29.png" alt="TOP 5 ĐÔI GIÀY BẢO HỘ CÁCH ĐIỆN TỐT NHẤT HIỆN NAY " width="100%">
+                                    <img src="images/New/3tk%20%282%29.png" alt="TOP 5 ĐÔI GIÀY BẢO HỘ CÁCH ĐIỆN TỐT NHẤT HIỆN NAY " width="100%">
                                 </div>
                             </a>
                         </div>
@@ -557,10 +557,10 @@
                         <div class="img">
                             <a href="tin-tuc/cau-tao-cua-thiet-bi-tro-tho-scba-t8000-model-t805-mlk-t-type-2-honeywell-41184.html" title="CẤU TẠO CỦA THIẾT BỊ TRỢ THỞ SCBA T8000 MODEL T805-MLK- T TYPE 2 HONEYWELL" data-id="15412">
                                 <div class="mobile-hide" style="height:80px; overflow:hidden;">
-                                    <img src="Images/New/SCBA.jpg" alt="CẤU TẠO CỦA THIẾT BỊ TRỢ THỞ SCBA T8000 MODEL T805-MLK- T TYPE 2 HONEYWELL" width="100%">
+                                    <img src="images/New/SCBA.jpg" alt="CẤU TẠO CỦA THIẾT BỊ TRỢ THỞ SCBA T8000 MODEL T805-MLK- T TYPE 2 HONEYWELL" width="100%">
                                 </div>
                                 <div class="mobile-block" style="height:55px; overflow:hidden;">
-                                    <img src="Images/New/SCBA.jpg" alt="CẤU TẠO CỦA THIẾT BỊ TRỢ THỞ SCBA T8000 MODEL T805-MLK- T TYPE 2 HONEYWELL" width="100%">
+                                    <img src="images/New/SCBA.jpg" alt="CẤU TẠO CỦA THIẾT BỊ TRỢ THỞ SCBA T8000 MODEL T805-MLK- T TYPE 2 HONEYWELL" width="100%">
                                 </div>
                             </a>
                         </div>
@@ -573,10 +573,10 @@
                         <div class="img">
                             <a href="tin-tuc/cac-bien-phap-an-toan-tren-cong-truong-xay-dung-41174.html" title="CÁC BIỆN PHÁP AN TOÀN TRÊN CÔNG TRƯỜNG XÂY DỰNG" data-id="15412">
                                 <div class="mobile-hide" style="height:80px; overflow:hidden;">
-                                    <img src="Images/New/2604.jpg" alt="CÁC BIỆN PHÁP AN TOÀN TRÊN CÔNG TRƯỜNG XÂY DỰNG" width="100%">
+                                    <img src="images/New/2604.jpg" alt="CÁC BIỆN PHÁP AN TOÀN TRÊN CÔNG TRƯỜNG XÂY DỰNG" width="100%">
                                 </div>
                                 <div class="mobile-block" style="height:55px; overflow:hidden;">
-                                    <img src="Images/New/2604.jpg" alt="CÁC BIỆN PHÁP AN TOÀN TRÊN CÔNG TRƯỜNG XÂY DỰNG" width="100%">
+                                    <img src="images/New/2604.jpg" alt="CÁC BIỆN PHÁP AN TOÀN TRÊN CÔNG TRƯỜNG XÂY DỰNG" width="100%">
                                 </div>
                             </a>
                         </div>
