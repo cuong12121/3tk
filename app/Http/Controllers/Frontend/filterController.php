@@ -22,7 +22,6 @@ class filterController extends Controller
 
     public function filter()
     {
-
       
         $link     = strip_tags($_GET['link']);
 
@@ -131,6 +130,8 @@ class filterController extends Controller
                     }
 
                     $product_search = product::whereIn('id', $result_product)->where('active', 1)->get();
+                    
+
 
                 // return redirect('/'.$link.'/?filter= 1');
 

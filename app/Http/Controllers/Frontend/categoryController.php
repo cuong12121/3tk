@@ -192,7 +192,6 @@ class categoryController extends Controller
 
             }
 
-            
 
              return view('frontend.filter', compact('product_search', 'link', 'filter', 'id_cate', 'ar_list', 'groupProduct_level'));
 
@@ -203,6 +202,157 @@ class categoryController extends Controller
             return view('frontend.category', with($data));
         }
        
+    }
+
+
+    public function showFilter(Request $request)
+    {
+        $link     =  $request->link;
+
+        $group_id =  $request->group_id;
+
+        $filter =   !empty($request->filter)?explode(',', $request->filter):'';
+
+        $property =  !empty($request->propertys)?explode(',', $request->propertys):'';
+
+
+        $new_filter = [];
+
+        $new_property = [];
+
+        if(!empty($filter)){
+            foreach($filter as $value){
+                array_push($new_filter, strip_tags($value));
+            }
+        }
+
+        if(!empty($property)){
+            foreach($property as $values){
+                array_push($new_property, strip_tags($values));
+            }
+        }
+        $findID = groupProduct::where('link', $link)->first();
+
+
+        if(!empty($findID)){
+
+            $id_cate = $findID->id;
+            $groupProduct_level = $findID->level;
+            $ar_list = $this->find_List_Id_Group($id_cate,$groupProduct_level);
+
+            
+
+            $parent_cate_id = $ar_list[0]['id'];
+
+            $list_data_group = filter::where('group_product_id', $parent_cate_id)->whereIn('id', $filter)->select('value')->get()->toArray();
+
+
+            $filter = filter::where('group_product_id', $parent_cate_id)->select('name', 'id')->get();
+
+            $fill = [];
+
+            $keys =  [];
+
+            $result = [];
+
+            $product = [];
+
+            $product_search = [];
+
+
+            $checkidgroup = groupProduct::find($group_id);
+
+
+
+            if(!empty($checkidgroup) && !empty($checkidgroup->product_id)){
+
+                $checkidgroup_id = json_decode($checkidgroup->product_id);
+        
+                if(!empty($list_data_group[0]['value'])){
+
+
+                    foreach ($list_data_group as $key => $value) {
+                        foreach($value as $values){
+
+                            $arr = json_decode($values, true);
+
+                            if(isset($arr)){
+
+                                array_push($fill, $arr);
+
+                                $keys[] = array_keys($arr);
+                            }
+                        }
+
+                    }
+                    
+                    if(isset($keys)){
+                        foreach($keys as $key1 => $vals){
+
+                       
+                            foreach($vals as $valu){
+
+                                if(in_array($valu, $property)){
+
+                                    $result[] = $fill[$key1][$valu];
+                                }
+                            
+                            }
+
+                        }
+                        
+                        if(isset($result)){
+
+                            foreach ($result as  $res) {
+                                foreach($res as $res1){
+                                    $product[] = $res1;
+                                }
+                            }
+                        }
+
+                        $number_key = count($keys);
+
+                        $number_product    = array_count_values($product);
+                    
+                        if(isset($number_product)){
+                            $result_product = [];
+                            foreach ($number_product as $key => $value) {
+                                if($value == $number_key){
+                                    array_push($result_product, $key);
+                                }
+
+                            }
+
+                            $product_search = product::whereIn('id', $result_product)->whereIn('id', $checkidgroup_id)->where('active', 1)->get();
+                        }
+
+                    }
+                }
+
+            }
+
+            else{
+                 $product_search =[];
+                $id_cate ='';
+                $ar_list =[];
+                $groupProduct_level = 0;
+
+            }
+
+        }
+
+
+        else{
+            $product_search =[];
+            $id_cate ='';
+            $ar_list =[];
+            $groupProduct_level = 0;
+
+        }
+
+        return view('frontend.ajax.product', compact('product_search'));
+
+
     }
 
 

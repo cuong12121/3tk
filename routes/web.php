@@ -10,6 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+
+Route::get('show-filter', 'Frontend\categoryController@showFilter')->name('show-filter');
+
 Route::get('crawl-product-details', 'crawlController@getProductDetails');
 
 Route::get('read-name-file', 'crawlController@readNamefile');

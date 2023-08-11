@@ -249,36 +249,80 @@
 
     propertys = [];
 
+
     $('.box_click').click(function() {
+
         let property = $(this).attr('value');
 
         filters  =  $(this).attr('data-id');
 
-        // kiểm tra filter có bị trùng không xóa filter trước + xóa property cùng filter
-        if(filter.indexOf(filters)>-1){
-            filter.splice(filter.indexOf(filters),1);
-            propertys.splice(filter.indexOf(filters),1);
-        }
-
-
-        if(property !=0){
-
-            filter.push(filters);
-
-            propertys.push(property);
-
-        }
-
-        filter = filter.join(',');
-
-        propertys = propertys.join(',');
+        if($(this).prop('checked')){
         
-        @if(!empty($link))
-          
-                window.location.href = '{{ route('details',$link) }}?filter=,'+filter+'&group_id={{ @$id_cate  }}&property=,'+propertys+'&link={{ $link  }}';
-                
-        @endif
+            if(property !=0){
+
+                filter.push(filters);
+
+                propertys.push(property);
+
+            }
+        }
+        else{
+
+            // xóa phần tử có giá trị đc click ở trong 2 mảng trên 
+
+            filter_delete = filter.indexOf(filter);
+
+            property_delete = propertys.indexOf(propertys);
+
+            filter.splice(filter_delete, 1);
+
+            propertys.splice(propertys, 1);
+
+
+        }
+
+
+        filterss = filter.join(',');
+
+        propertyss = propertys.join(',');
+
+        $.ajax({
+
+        type: 'GET',
+            url: "{{ route('show-filter') }}",
+            data: {
+               
+                filter:filterss,
+                propertys: propertyss,
+                link:'{{ $link }}',
+                group_id:'{{ @$id_cate  }}'
+            },
+
+            beforeSend: function() {
+                   
+                $('.spinner').show();
+
+            },
+            success: function(result){
+
+                $('#getproducts').html('');
+
+                $('#getproducts').html(result);
+
+                $('.spinner').hide();
+
+
+            }
+        });
+        
+        
     });
+
+
+
+
+
+   
 
 
    $('.change-price').click(function() {
