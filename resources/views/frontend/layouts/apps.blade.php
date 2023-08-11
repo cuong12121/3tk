@@ -90,6 +90,8 @@
 
             #ui-id-1{
                 width: 600px !important;
+                background: #fff;
+                padding: 0;
 
             }
         </style>
