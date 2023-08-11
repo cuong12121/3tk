@@ -134,7 +134,7 @@
                                         <div class="sp-wrap">
                                             <div class="">
                                                 <link rel="stylesheet" type="text/css" href="../slidesanpham/images/template.css">
-                                                <script type="text/javascript" src="../slidesanpham/images/jquery-1.js"></script>
+                                               
                                                 <div class="moduletable clearfix">
                                                     <div id="slidehome" class="slidehome">
                                                         <script src="../slidesanpham/images/html5gallery.js"></script>
