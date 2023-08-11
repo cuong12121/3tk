@@ -286,9 +286,6 @@
         @endif
 
 
-
-
-
         @foreach($group as $key => $groups)
 
         <?php 
@@ -304,7 +301,7 @@
                     <ul class="list-unstyled wrapbox-pNavCate wrapbox-pNavCates">
                         <li class="wrapbox-getProducts active" data-w="3" data-cid="17">
                             <h3>
-                                <a href="bao-ve-dau-11.html" style="text-transform: uppercase; font-size: 13pt;">
+                                <a href="{{ route('details', @$groups->link)  }}" style="text-transform: uppercase; font-size: 13pt;">
                                 {{  @$groups->name }}</a>
                             </h3>
                         </li>
