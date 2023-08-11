@@ -192,6 +192,8 @@ class categoryController extends Controller
 
             }
 
+            
+
              return view('frontend.filter', compact('product_search', 'link', 'filter', 'id_cate', 'ar_list', 'groupProduct_level'));
 
         }

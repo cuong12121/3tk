@@ -131,7 +131,6 @@
                                          @if(isset($filter))
                                         @foreach($filter as $filters)
 
-                                        
                                         <?php
 
                                             $propertyId = cache()->remember('filterId_'.$filters->id, 1000, function () use($filters){
@@ -141,9 +140,6 @@
                                             });
                                            
                                         ?>
-
-                                      
-
                                        
                                         <div class="yith-wcan-filter filter-tax checkbox-design" id="filter_768_0" data-filter-type="tax" data-filter-id="0" data-taxonomy="yith_product_brand" data-multiple="yes" data-relation="or">
                                             <h4 class="filter-title">{{ $filters->name }}</h4>
