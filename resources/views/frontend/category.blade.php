@@ -5,6 +5,34 @@
     #ContentPlaceHolder1_DataList1_Labelgia19_0 span{
         font-weight: bold !important;
     }
+
+    .filters-container h4, .filter-checkbox li a{
+        font-weight: bold;
+        color: #000;
+        line-height: 26px;
+    }
+
+    .filters-container ul{
+        list-style: none;
+    }
+
+    .spinner {
+      width: 4em;
+      height: 4em;
+      border: 0.5em solid rgba(0, 0, 0, 0.1);
+      border-left-color: #7983ff;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
 </style>
 
 <div class="body-content bg-page clearfix">
@@ -92,7 +120,68 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div id="getproducts" class="col-12 col-md-12">
+
+                    <div class="col-2 col-md-2">
+
+                        <aside id="yith-woocommerce-ajax-navigation-filters-3" class="widget widget_yith-woocommerce-ajax-navigation-filters">
+                            <div class="yith-wcan-filters no-title enhanced" id="preset_768" data-preset-id="768" data-target="">
+                                <div class="filters-container">
+                                    <form method="POST">
+
+                                         @if(isset($filter))
+                                        @foreach($filter as $filters)
+
+                                        
+                                        <?php
+
+                                            $propertyId = cache()->remember('filterId_'.$filters->id, 1000, function () use($filters){
+
+                                                $propertyId =  App\Models\property::where('filterId', $filters->id)->get()??'';
+                                                return $propertyId;
+                                            });
+                                           
+                                        ?>
+
+                                      
+
+                                       
+                                        <div class="yith-wcan-filter filter-tax checkbox-design" id="filter_768_0" data-filter-type="tax" data-filter-id="0" data-taxonomy="yith_product_brand" data-multiple="yes" data-relation="or">
+                                            <h4 class="filter-title">{{ $filters->name }}</h4>
+                                            <div class="filter-content">
+                                                <ul class="filter-items filter-checkbox  level-0">
+
+                                                    @if(isset($propertyId))
+                                                    @foreach($propertyId as $property)
+                                                    <li class="filter-item checkbox  level-0">
+                                                        <label for="filter_768_0_169">
+                                                            <input type="checkbox" id="box_{{ $property->id }}" name="filter" value="{{ $property->id }}" data-id="{{ $filters->id }}" class="box_click">
+
+                                                            <a href="" role="button" class="term-label">
+                                                                {{ $property->name}}                 
+                                                            </a>
+                                                        </label>
+                                                    </li>
+                                                    @endforeach
+                                                    @endif
+
+                                                </ul>
+                                                <!-- .filter-items -->
+                                            </div>
+                                        </div>
+
+                                       
+                                        @endforeach
+                                        @endif
+
+                                        
+                                    </form>
+                                </div>
+                            </div>
+                        </aside>
+                        
+                    </div>
+
+                    <div id="getproducts" class="col-10 col-md-10">
                         <div class="row product-list product-list-bycate">
 
 
@@ -130,7 +219,11 @@
                         </div>
                         <div style="height: 25px; text-align: center; padding-bottom: 5px;">
                         </div>
+
+                        <div class="spinner"></div>
                     </div>
+
+
                 </div>
             </div>
         </div>
@@ -153,7 +246,45 @@
 
 
 <script>
-    
+
+    $('.spinner').hide();
+
+    filter = [];
+
+    propertys = [];
+
+    $('.box_click').click(function() {
+        let property = $(this).attr('value');
+
+        filters  =  $(this).attr('data-id');
+
+        // kiểm tra filter có bị trùng không xóa filter trước + xóa property cùng filter
+        if(filter.indexOf(filters)>-1){
+            filter.splice(filter.indexOf(filters),1);
+            propertys.splice(filter.indexOf(filters),1);
+        }
+
+
+        if(property !=0){
+
+            filter.push(filters);
+
+            propertys.push(property);
+
+        }
+
+        filter = filter.join(',');
+
+        propertys = propertys.join(',');
+        
+        @if(!empty($link))
+          
+                window.location.href = '{{ route('details',$link) }}?filter=,'+filter+'&group_id={{ @$id_cate  }}&property=,'+propertys+'&link={{ $link  }}';
+                
+        @endif
+    });
+
+
    $('.change-price').click(function() {
 
         option = $(this).attr('data');
@@ -175,13 +306,19 @@
                 idcate: '{{ $id_cate??'' }}'
                 
             },
+
+            beforeSend: function() {
+                   
+                $('.spinner').show();
+
+            },
             success: function(result){
 
                 $('#getproducts').html('');
 
                 $('#getproducts').html(result);
 
-            
+                $('.spinner').hide();
 
             }
         });
