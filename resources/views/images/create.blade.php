@@ -132,7 +132,13 @@
 
     <?php 
         $images = App\Models\image::where('product_id', $product_id)->get();
+
+        $check_color = DB::table('filters')->join('properties', 'filters.id', '=', 'properties.filterId')->select('properties.id','properties.name')->where('filters.group_product_id', $group_id)->where('filters.name', 'Màu sản phẩm')->get()->toArray();
+
+
     ?>
+
+
 
 
     @if(!empty($images))
@@ -144,17 +150,33 @@
                 <th>Image</th>
                 <th>Product Id</th>
                 <th>Chọn ảnh đại diện</th>
+
+                @if(!empty($check_color) && count($check_color))
+                <th>Màu sản phẩm</th>
+                @endif
+
                 <th colspan="3">Action</th>
             </tr>
             </thead>
             <tbody>
+
+
             @foreach($images as $image)
                 <tr>
                     <td><img src="{{ asset($image->image) }}" height="150px" width="150px"></td>
 
-                
-                <td>{{ $image->product_id }}</td>
-                <td><input type="checkbox"  name="check" value="{{ $image->image }}"  {{ $image->image==$imageProduct?'checked':'' }}></td>
+                    <td>{{ $image->product_id }}</td>
+                    <td><input type="checkbox"  name="check" value="{{ $image->image }}"  {{ $image->image==$imageProduct?'checked':'' }}></td>
+                    @if(!empty($check_color))
+                    <td>
+                        @if($image->color_id ===0 )
+                            <span>Không chọn</span>
+                        @else
+                        <span>{{   App\Models\property::find($image->color_id)->name }}</span>
+                        @endif
+
+                    </td>
+                    @endif
                     <td width="120">
                         {!! Form::open(['route' => ['images.destroy', $image->id], 'method' => 'delete']) !!}
                         <div class='btn-group'>
@@ -166,6 +188,8 @@
                                class='btn btn-default btn-xs'>
                                 <i class="far fa-edit"></i>
                             </a>
+
+
                             {!! Form::button('<i class="far fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
                         </div>
                         {!! Form::close() !!}

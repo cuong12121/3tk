@@ -52,6 +52,7 @@ class image extends Model
         'image',
         'link',
         'product_id',
+        'color_id',
         'order'
     ];
 

@@ -26,4 +26,25 @@
     {!! Form::text('product_id', $product_id, ['class' => 'form-control']) !!}
 </div>
 
+<?php 
+    $check_color = DB::table('filters')->join('properties', 'filters.id', '=', 'properties.filterId')->select('properties.id','properties.name')->where('filters.group_product_id', $group_id)->where('filters.name', 'Màu sản phẩm')->get();
+
+    $color = [];
+
+    $color[0] ='Không chọn';
+    foreach ($check_color  as $key => $value) {
+        $color[$value->id] = $value->name;
+        
+    }
+    
+
+?>
+
+
+<!-- color Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('Color', 'Màu sắc sản phẩm:') !!}
+
+    {!! Form::select('color_id', $color, '', ['class' => 'form-control']) !!}
+</div>
 

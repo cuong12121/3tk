@@ -133,6 +133,8 @@
                                     <div style="padding: 0 5px;">
                                         <div class="sp-wrap">
                                             <div class="">
+
+
                                                 <link rel="stylesheet" type="text/css" href="../slidesanpham/images/template.css">
                                                
                                                 <div class="moduletable clearfix">
@@ -140,8 +142,10 @@
                                                         <script src="../slidesanpham/images/html5gallery.js"></script>
                                                         <div style="width: 100%; overflow: hidden">
                                                             <div style="display: none; margin: 0 auto;" id="mygallery1" data-skin="gallery" data-width="500" data-height="500" data-resizemode="fill" data-responsive="true">
+                                                                
                                                                 <a href="{{ asset($data->Image) }}">
                                                                 <img alt="{{ $data->Name }}" src="{{ asset($data->Image) }}" style="border: 1px solid #e7e7e7;"></a>
+
                                                                 <a href="../fileUpload/DYNAMICA-V64-0021-3tk.jpg">
                                                                 <img alt="Giày Bảo Hộ Lao Động Dynamica S3 " src="../fileUpload/DYNAMICA-V64-0021-3tk.jpg" style="border: 1px solid #e7e7e7;"></a>
                                                                 <a href="../fileUpload/DYNAMICA-V64-0015-3tk.jpg">
@@ -150,7 +154,7 @@
                                                                 <img alt="Giày Bảo Hộ Lao Động Dynamica S3 " src="../fileUpload/DYNAMICA-V64-0006-3tk.jpg" style="border: 1px solid #e7e7e7;"></a>
 
 
-                                                               
+
                                                             </div>
                                                         </div>
                                                     </div>
@@ -181,11 +185,30 @@
                                                     </p>
                                                 </div>
                                             </div>
-                                            <span id="ContentPlaceHolder1_chkmau"><input id="ContentPlaceHolder1_chkmau_0" type="radio" name="ctl00$ContentPlaceHolder1$chkmau" value="Blue"><label for="ContentPlaceHolder1_chkmau_0">Blue</label><input id="ContentPlaceHolder1_chkmau_1" type="radio" name="ctl00$ContentPlaceHolder1$chkmau" value="Green"><label for="ContentPlaceHolder1_chkmau_1">Green</label></span>
+                                            <span id="ContentPlaceHolder1_chkmau">
+
+                                                <?php 
+
+                                                    $color_product = DB::table('images')->join('properties', 'images.color_id', '=', 'properties.id')->select('images.image', 'properties.name', 'properties.id')->where('images.color_id','>',0)->get();
+
+                                                ?>
+
+                                                @if(!empty($color_product) && $color_product->count()>0)
+                                                @foreach($color_product as $value)
+                                                <input id="ContentPlaceHolder1_chkmau_0" type="radio" name="ctl00$ContentPlaceHolder1$chkmau" value="Blue">
+                                                <label for="ContentPlaceHolder1_chkmau_0">{{ @$value->name }}</label>
+                                                @endforeach
+                                                @endif
 
                                             <br>
                                             <br>
-                                            <span id="ContentPlaceHolder1_chksize"><input id="ContentPlaceHolder1_chksize_0" type="radio" name="ctl00$ContentPlaceHolder1$chksize" value="36"><label for="ContentPlaceHolder1_chksize_0">36</label><input id="ContentPlaceHolder1_chksize_1" type="radio" name="ctl00$ContentPlaceHolder1$chksize" value="37"><label for="ContentPlaceHolder1_chksize_1">37</label><input id="ContentPlaceHolder1_chksize_2" type="radio" name="ctl00$ContentPlaceHolder1$chksize" value="38"><label for="ContentPlaceHolder1_chksize_2">38</label><input id="ContentPlaceHolder1_chksize_3" type="radio" name="ctl00$ContentPlaceHolder1$chksize" value="39"><label for="ContentPlaceHolder1_chksize_3">39</label><input id="ContentPlaceHolder1_chksize_4" type="radio" name="ctl00$ContentPlaceHolder1$chksize" value="40"><label for="ContentPlaceHolder1_chksize_4">40</label><input id="ContentPlaceHolder1_chksize_5" type="radio" name="ctl00$ContentPlaceHolder1$chksize" value="41"><label for="ContentPlaceHolder1_chksize_5">41</label><input id="ContentPlaceHolder1_chksize_6" type="radio" name="ctl00$ContentPlaceHolder1$chksize" value="42"><label for="ContentPlaceHolder1_chksize_6">42</label><input id="ContentPlaceHolder1_chksize_7" type="radio" name="ctl00$ContentPlaceHolder1$chksize" value="43"><label for="ContentPlaceHolder1_chksize_7">43</label><input id="ContentPlaceHolder1_chksize_8" type="radio" name="ctl00$ContentPlaceHolder1$chksize" value="44"><label for="ContentPlaceHolder1_chksize_8">44</label><input id="ContentPlaceHolder1_chksize_9" type="radio" name="ctl00$ContentPlaceHolder1$chksize" value="45"><label for="ContentPlaceHolder1_chksize_9">45</label><input id="ContentPlaceHolder1_chksize_10" type="radio" name="ctl00$ContentPlaceHolder1$chksize" value="46"><label for="ContentPlaceHolder1_chksize_10">46</label><input id="ContentPlaceHolder1_chksize_11" type="radio" name="ctl00$ContentPlaceHolder1$chksize" value="47"><label for="ContentPlaceHolder1_chksize_11">47</label></span>
+                                            <span id="ContentPlaceHolder1_chksize">
+
+                                                <input id="ContentPlaceHolder1_chksize_0" type="radio" name="ctl00$ContentPlaceHolder1$chksize" value="36">
+                                                <label for="ContentPlaceHolder1_chksize_0">36</label>
+
+                                            </span>
+
                                             <div style="padding-top: 6px;" itemprop="brand" itemscope="" itemtype="http://schema.org/Brand">
                                                 <span>Thương hiệu: </span><a href="../safety-Jogger--bi-165.html" itemprop="url"><span itemprop="name">
                                                 Safety Jogger - Bỉ
@@ -299,7 +322,7 @@
                                             <picture>
                                                 <source srcset="{{ asset($value->Image) }}" type="image/webp">
                                                 <source srcset="{{ asset($value->Image) }}" type="image/jpeg">
-                                                <img loading="lazy" src="{{ asset($value->Image) }}" alt="Giày Bảo Hộ Lao Động Lava S3">
+                                                <img loading="lazy" src="{{ asset($value->Image) }}" alt="{{ $value->Name }}">
                                                 <span class="product-item-view product-item-view-1752" style="display:none;"></span>
                                             </picture>
                                         </div>
