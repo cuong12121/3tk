@@ -121,16 +121,15 @@
                 </div>
                 <div class="row">
 
+                  
+                    @if(!empty($filter) && $filter->count()>0)
                     <div class="col-2 col-md-2">
 
                         <aside id="yith-woocommerce-ajax-navigation-filters-3" class="widget widget_yith-woocommerce-ajax-navigation-filters">
                             <div class="yith-wcan-filters no-title enhanced" id="preset_768" data-preset-id="768" data-target="">
                                 <div class="filters-container">
                                     <form method="POST">
-
-                                         @if(isset($filter))
                                         @foreach($filter as $filters)
-
                                         <?php
 
                                             $propertyId = cache()->remember('filterId_'.$filters->id, 1000, function () use($filters){
@@ -140,7 +139,7 @@
                                             });
                                            
                                         ?>
-                                       
+                                    
                                         <div class="yith-wcan-filter filter-tax checkbox-design" id="filter_768_0" data-filter-type="tax" data-filter-id="0" data-taxonomy="yith_product_brand" data-multiple="yes" data-relation="or">
                                             <h4 class="filter-title">{{ $filters->name }}</h4>
                                             <div class="filter-content">
@@ -164,20 +163,18 @@
                                                 <!-- .filter-items -->
                                             </div>
                                         </div>
-
-                                       
                                         @endforeach
-                                        @endif
-
-                                        
                                     </form>
                                 </div>
                             </div>
                         </aside>
                         
                     </div>
+                    @endif
 
-                    <div id="getproducts" class="col-10 col-md-10">
+
+
+                    <div id="getproducts" class="col-{{ !empty($filter)&& $filter->count()>0?10:12  }} col-md-{{ !empty($filter)?10:12  }}">
                         <div class="row product-list product-list-bycate">
 
 
