@@ -2,6 +2,11 @@
 
 @section('content')
 
+<?php 
+
+    $color_product = DB::table('images')->join('properties', 'images.color_id', '=', 'properties.id')->select('images.image', 'properties.name', 'properties.id')->where('images.color_id','>',0)->get();
+?>
+
 <style>
     .html5gallery-elem-0 a
     {
@@ -189,12 +194,6 @@
                                                 </div>
                                             </div>
                                             <span id="ContentPlaceHolder1_chkmau">
-
-                                                <?php 
-
-                                                    $color_product = DB::table('images')->join('properties', 'images.color_id', '=', 'properties.id')->select('images.image', 'properties.name', 'properties.id')->where('images.color_id','>',0)->get();
-
-                                                ?>
 
                                                 @if(!empty($color_product) && $color_product->count()>0)
                                                 @foreach($color_product as $key => $value)
