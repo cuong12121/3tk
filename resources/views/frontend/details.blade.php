@@ -197,9 +197,9 @@
                                                 ?>
 
                                                 @if(!empty($color_product) && $color_product->count()>0)
-                                                @foreach($color_product as $value)
-                                                <input id="ContentPlaceHolder1_chkmau_0" type="radio" name="ctl00$ContentPlaceHolder1$chkmau" value="Blue">
-                                                <label for="ContentPlaceHolder1_chkmau_0">{{ @$value->name }}</label>
+                                                @foreach($color_product as $key => $value)
+                                                <input id="ContentPlaceHolder1_chkmau_{{ $key }}" type="radio" name="ctl00$ContentPlaceHolder1$chkmau" value="Blue">
+                                                <label for="ContentPlaceHolder1_chkmau_{{ $key }}">{{ @$value->name }}</label>
                                                 @endforeach
                                                 @endif
 
