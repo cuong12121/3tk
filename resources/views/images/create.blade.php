@@ -133,7 +133,7 @@
     <?php 
         $images = App\Models\image::where('product_id', $product_id)->get();
 
-        $check_color = DB::table('filters')->join('properties', 'filters.id', '=', 'properties.filterId')->select('properties.id','properties.name')->where('filters.group_product_id', $group_id)->where('filters.name', 'Màu sản phẩm')->get()->toArray();
+        $check_color = DB::table('filters')->join('properties', 'filters.id', '=', 'properties.filterId')->select('properties.id','properties.name')->where('filters.group_product_id', $group_id)->where('filters.name', 'Màu sắc')->get()->toArray();
 
 
     ?>
