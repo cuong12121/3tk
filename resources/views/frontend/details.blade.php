@@ -2,10 +2,6 @@
 
 @section('content')
 
-<?php 
-
-    $color_product = DB::table('images')->join('properties', 'images.color_id', '=', 'properties.id')->select('images.image', 'properties.name', 'properties.id')->where('images.color_id','>',0)->get();
-?>
 
 <style>
     .html5gallery-elem-0 a
@@ -36,14 +32,14 @@
     }
     .html5gallery-elem-img-0
     {
-    width: 100% !important;
+        width: 100% !important;
     }
     .html5gallery-title-0
     {
-    top: auto;
-    bottom: 0px;
-    display: none;
-    padding: 0;
+        top: auto;
+        bottom: 0px;
+        display: none;
+        padding: 0;
     }
     .html5gallery-tn-title-0
     {
@@ -287,7 +283,7 @@
 
                                                 @if(!empty($color_product) && $color_product->count()>0)
                                                 @foreach($color_product as $key => $value)
-                                                <input id="ContentPlaceHolder1_chkmau_{{ $key }}" type="radio" name="ctl00$ContentPlaceHolder1$chkmau" value="Blue" class="click-show-image" data-id="{{ @asset($value->image) }}">
+                                                <input id="ContentPlaceHolder1_chkmau_{{ $key }}" type="radio" name="ctl00$ContentPlaceHolder1$chkmau" value="{{ @$value->name }}" class="click-show-image" data-id="{{ @asset($value->image) }}">
                                                 <label for="ContentPlaceHolder1_chkmau_{{ $key }}">{{ @$value->name }}</label>
                                                 @endforeach
                                                 @endif
@@ -295,9 +291,16 @@
                                             <br>
                                             <br>
                                             <span id="ContentPlaceHolder1_chksize">
+                                               
+                                                @if(isset($size_pd))
 
-                                                <input id="ContentPlaceHolder1_chksize_0" type="radio" name="ctl00$ContentPlaceHolder1$chksize" value="36">
-                                                <label for="ContentPlaceHolder1_chksize_0">36</label>
+                                                @foreach($size_pd as $key => $val)
+                                                <input id="ContentPlaceHolder1_chksize_{{ $key }}" type="radio" name="ctl00$ContentPlaceHolder1$chksize" value="{{ @$val }}" class="click-selected-size">
+                                                <label for="ContentPlaceHolder1_chksize_{{ $key }}">{{ @$val }} </label>
+
+                                                @endforeach
+
+                                                @endif
 
                                             </span>
 
@@ -466,18 +469,44 @@
 
     // click show modal
 
+    colors_selected = [];
+
+    size_selected = [];
+
+
     var modalImg = document.getElementById("img01");
       
     $('.click-show-image').click(function() {
+
+        colors_selected = [];
+
+        value = $(this).attr('value');
+
+        colors_selected.push(value);
+
         modal.style.display = "block";
+
         const img = $(this).attr('data-id');
 
         modalImg.src = img;
-        captionText.innerHTML = 'ảnh sản phẩm';
+
+         console.log(colors_selected);
+        
        
     });
 
 
+    $('.click-selected-size').click(function () {
+
+        value = $(this).attr('value');
+
+        size_selected = [];
+
+        size_selected.push(value);
+
+    })
+
+   
     
 
     // Get the <span> element that closes the modal
@@ -500,28 +529,53 @@
     });
 
     function addCartFast(id) {
-    
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-    
-        $.ajax({
-            type: 'POST',
-            url: "{{ route('addcartfast') }}",
-            data: {
-                product_id: id,
-                   
-            },
-            success: function(result){
-                $('#header_lblmess').text('Giỏ hàng ('+result+')')
-               
-                $('.number-cart').text(result);
-                alert('Thêm sản phẩm vào giỏ hàng thành công !');
 
-            }
-        });
+
+        @if(!empty($color_product) && $color_product->count()>0)
+
+        if(colors_selected.length===0){
+
+            alert('bạn chưa chọn màu sản phẩm');
+
+        } 
+
+        @endif
+
+        @if(isset($size_pd)) 
+        if(size_selected.length ===0){
+
+            alert('bạn chưa chọn kích thước sản phẩm');
+        } 
+
+        @endif 
+
+        if(colors_selected.length>0 && size_selected.length>0){
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+        
+            $.ajax({
+                type: 'POST',
+                url: "{{ route('addcartfast') }}",
+                data: {
+                    product_id: id,
+                       
+                },
+                success: function(result){
+                    $('#header_lblmess').text('Giỏ hàng ('+result+')')
+                   
+                    $('.number-cart').text(result);
+                    alert('Thêm sản phẩm vào giỏ hàng thành công !');
+
+                }
+            });
+
+        }
+       
+        
+        
         
     }
 

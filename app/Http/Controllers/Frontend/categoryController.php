@@ -877,8 +877,39 @@ class categoryController extends Controller
             $meta = Cache::remember('metaseo-detail'.$data->Meta_id,100, function() use ($data){
                 return metaSeo::find($data->Meta_id);
             }); 
-            
-            return view('frontend.details', compact('data', 'images', 'other_product', 'meta', 'pageCheck', 'data_cate'));
+
+
+            $color_product = DB::table('images')->join('properties', 'images.color_id', '=', 'properties.id')->select('images.image', 'properties.name', 'properties.id')->where('images.product_id', $data->id)->where('images.color_id','>',0)->get();
+
+            $check_show_size =   DB::table('properties')->join('filters', 'properties.filterId', '=', 'filters.id')->select('properties.name', 'properties.id', 'filters.value')->where('filters.group_product_id', $data_cate)->where('filters.name', 'size')->get();
+
+           
+            $size_pd = [];
+
+
+           
+
+            if(!empty($check_show_size) &&  $check_show_size->count()>0){
+
+                foreach ($check_show_size as $key => $value) {
+
+                    $all_value_size = json_decode($value->value, true);
+
+                    // nếu tồn tại size trong value phù hợp với id sản phẩm thì đẩy vào mảng để show ra bên ngoài
+
+                    if(!empty($all_value_size[$value->id]) &&  array_search($data->id, $all_value_size[$value->id])>=0){
+
+                        array_push($size_pd, $value->name);
+
+                    }
+
+                }
+
+            }
+
+            // dd(json_decode($check_show_size[1]->value, true));
+
+            return view('frontend.details', compact('data', 'images', 'other_product', 'meta', 'pageCheck', 'data_cate', 'color_product', 'size_pd'));
         }
     }
 
