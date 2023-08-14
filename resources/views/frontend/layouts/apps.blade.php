@@ -94,6 +94,31 @@
                 padding: 0;
 
             }
+
+            .popup-allpage .popup-allpage-item{
+                width: auto !important;
+
+            }
+
+            button{
+                border: 0px !important;
+            }
+
+            .opacity-background{
+                background-color: rgba(0, 0 , 0, 0.5);
+            }
+
+            .popup-allpage .popup-allpage-item a.popup-allpage-close{
+                font-size: 30px;
+                width: auto !important;
+                height: auto !important;
+                padding: 10px;
+                background: #ddd;
+
+
+            }
+
+
         </style>
         <style id="ins-outer-stylesheet-3605" type="text/css" classname="ins-outer-stylesheet-3605" class="ins-outer-stylesheet-3605">.ins-preview-wrapper-3605 .ins-content-wrapper strong,.ins-preview-wrapper-3605 a{ color: inherit; }.ins-preview-wrapper-3605 #ins-lead-collection-on-overlay{ float: left; position: relative; width: 600px; height: 600px; display: flex; justify-content: center; flex-direction: column; align-items: center; background-image: url('mediamartvn/defaultImageLibrary/Lead-Collection 600x600-1609146001.png');}.ins-preview-wrapper-3605 .ins-notification-content{ display: inline-block !important; margin: 10px; max-width: 100%; float: left; }.ins-preview-wrapper-3605 form{ display: flex; justify-content: center; align-items: center; width: 100vh; position: relative; min-height: 400px; }.ins-preview-wrapper-3605 .ins-form-submit-button{ height: 68px; width: 100%; display: flex; justify-content: center; align-items: center; color: #242E34; font-family: "Open Sans"; font-size: 26px; font-weight: bold; line-height: 36px;}.ins-preview-wrapper-3605 .ins-element-button .ins-element-content{ text-align: center; font-size: 16px; color: #ffffff; border-style: solid; border-width: 0;}.ins-preview-wrapper-3605 .ins-icon{ display: inline-block; font-size: inherit; text-rendering: auto; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; transform: translate(0, 0); -webkit-transform:translate(0, 0); -moz-transform:translate(0, 0); -ms-transform:translate(0, 0); -o-transform:translate(0, 0);}.ins-preview-wrapper-3605 .ins-adaptive-title .ins-element-content,.ins-preview-wrapper-3605 .ins-adaptive-description .ins-element-content{ height: auto; margin: 0 auto; padding: 0; box-sizing: border-box; color: #000000;}.ins-preview-wrapper-3605 .ins-adaptive-email input{ width: 100%; height: 45px; margin: 0; font-size: 20px; color: #000; font-weight: 700; padding: 0 15px; box-sizing: border-box; border-radius: 5px; outline: none; border: 1px solid #4A4A4A; background-color: #4A4A4A; border-radius: 0px !important;}.ins-preview-wrapper-3605 .ins-adaptive-email input::placeholder{ color: #dddecd !important; opacity: 1; font-size: 25px; font-weight: 400;}.ins-preview-wrapper-3605 .ins-adaptive-email input{ color: #dddecd !important; opacity: 1; font-size: 25px !important; font-weight: 400;}.ins-preview-wrapper-3605 .ins-adaptive-email input:-ms-input-placeholder{ color: #dddecd !important; opacity: 1; font-size: 25px; font-weight: 400;}.ins-preview-wrapper-3605 .ins-adaptive-title,.ins-preview-wrapper-3605 .ins-adaptive-description,.ins-preview-wrapper-3605 .ins-adaptive-question,.ins-preview-wrapper-3605 .ins-adaptive-button{ margin: auto; margin-top: 10px; color: #FFFFFF;}.ins-preview-wrapper-3605 .ins-adaptive-title .ins-element-content,.ins-preview-wrapper-3605 .ins-adaptive-description .ins-element-content{ outline: none; word-wrap: break-word; word-break: break-word; text-align: center;}.ins-preview-wrapper-3605 .ins-adaptive-title .ins-element-content{ font-family: inherit; font-size: 18px; font-weight: 700; text-align: center;}.ins-preview-wrapper-3605 .ins-adaptive-description .ins-element-content{ font-family: inherit; font-size: 12px; text-align: center;}.ins-preview-wrapper-3605 .ins-slider{ width: 100%; overflow: hidden; color: #fff;}.ins-preview-wrapper-3605 .ins-slider-page{ float: left; visibility: hidden;}.ins-preview-wrapper-3605 .ins-slider-page.ins-active-slide{ float: left; visibility: visible;}.ins-preview-wrapper-3605 .ins-slider-container{ overflow: hidden; transform: translate3d(0, 0, 0); -webkit-transform:translate3d(0, 0, 0); -moz-transform:translate3d(0, 0, 0); -ms-transform:translate3d(0, 0, 0); -o-transform:translate3d(0, 0, 0); display: flex !important; align-items: center; justify-content: center; width: 200vh !important; height: auto !important; -webkit-transition: transform 0.5s ease; -moz-transition: transform 0.5s ease-in; -ms-transition: transform 0.5s ease-in; -o-transition: transform 0.5s ease-in; transition: transform 0.5s ease-in; }.ins-preview-wrapper-3605 #ins-slide-page-1{ padding: 25px 11px; position: relative;}.ins-preview-wrapper-3605 .ins-slider-padding{ padding: 10px; }.ins-preview-wrapper-3605 .ins-slider-padding > div{ padding: 2px; width: 60%; max-width: 625px; }.ins-preview-wrapper-3605 .ins-checkbox{ float: left; margin-top: 2px;}.ins-preview-wrapper-3605 .ins-checkbox-text{ float: left; font-size: 16px; color: #FFFFFF; width: 100%;}.ins-preview-wrapper-3605 .ins-element-content{ outline: none; width: 100%; text-align: center;}.ins-preview-wrapper-3605 .ins-checkbox-text .ins-element-content{ text-align: left;}.ins-preview-wrapper-3605 .ins-flex-centered-container{ display: flex !important; align-items: center;}.ins-preview-wrapper-3605 #ins-question-group-form input{ outline: none;}.ins-preview-wrapper-3605 .ins-validation-error{ border: 1px solid red !important;}.ins-preview-wrapper-3605 .ins-material-checkbox{ -webkit-tap-highlight-color: transparent; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; float: left; border: none !important; margin: 0px !important; padding: 0px !important; height: 25px;}.ins-preview-wrapper-3605 .ins-checkbox-default:not(:checked),.ins-preview-wrapper-3605 .ins-checkbox-default:checked{ opacity: 0; position: absolute; margin: 0; z-index: -1; width: 0; height: 0; overflow: hidden; left: 0; pointer-events: none;}.ins-preview-wrapper-3605 .ins-checkbox-default ~ label{ display: inline-block; position: relative; cursor: pointer; height: 16px; padding-left: 22px; padding-top: 4px; background: transparent; margin: 0 !important; width: 100%;}.ins-preview-wrapper-3605 .ins-checkbox-default ~ label:before{ transform: translateZ(0); -webkit-transform: translateZ(0); -moz-transform: translateZ(0); -ms-transform: translateZ(0); -o-transform: translateZ(0);; -webkit-transition: all .2s ease-in-out; -moz-transition: all .2s ease-in-out; -ms-transition: all .2s ease-in-out; -o-transition: all .2s ease-in-out; transition: all .2s ease-in-out;}.ins-preview-wrapper-3605 .ins-checkbox-default ~ label:before,.ins-preview-wrapper-3605 .ins-checkbox-default ~ label:after{ position: absolute; content: ""; left: 0; border-radius: 3px;}.ins-preview-wrapper-3605 .ins-checkbox-default:not(:checked) ~ label:before{ width: 8px; height: 12px; border-top: 2px solid transparent; border-left: 2px solid transparent; border-bottom: 2px solid transparent; border-right: 2px solid transparent; top: 1px; left: 0; -webkit-transform: rotateZ(37deg) translate3d(0, 0, 0); transform: rotateZ(37deg) scale(0.1); -webkit-transform-origin: 20% 40%; transform-origin: 100% 100%;}.ins-preview-wrapper-3605 .ins-checkbox-default:not(:checked) ~ label:after{ width: 16px; height: 16px; background-color: transparent; border: 2px solid #242e34; z-index: 0;}.ins-preview-wrapper-3605 .ins-checkbox-default:checked ~ label:before{ top: 5px; left: -1px; width: 8px; height: 12px; border-top: 2px solid transparent; border-left: 2px solid transparent; border-bottom: 2.5px solid white; border-right: 2.5px solid white; z-index: 1; backface-visibility: hidden; transform: rotateZ(37deg) scale(1); -webkit-transform-origin: 100% 100%; transform-origin: 100% 100%;}.ins-preview-wrapper-3605 .ins-checkbox-default:checked ~ label:after{ width: 16px; height: 16px; background-color: #242e34; border: 2px solid #242e34;}.ins-preview-wrapper-3605 .ins-checkbox-default.ins-validation-error:not(:checked) ~ label:after{ border-color: red;}.ins-preview-wrapper-3605 .ins-slider-padding-auto{ padding: 10px 0;}.ins-preview-wrapper-3605 .ins-thank-you-main-title{ font-family: inherit; font-size: 30px; font-weight: bold; text-align: center; color: #ffffff; line-height: 30px;}.ins-preview-wrapper-3605 .ins-thank-you-sub-title{ font-family: inherit; font-size: 11px; text-align: center; color: #ffffff; margin-top: 20px;}.ins-preview-wrapper-3605 .ins-coupon-text{ width: 200px; height: 40px; line-height: 38px; margin: 20px auto; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none;}.ins-preview-wrapper-3605 .ins-coupon-text .ins-element-content{ border: 2px dashed; border-color: #dae8f0; font-weight: bold; font-size: 14px;}.ins-preview-wrapper-3605 div[id^="wrap-close-button"]{ position: absolute; z-index: 1; top: -30px; right: -100px;}.ins-preview-wrapper-3605 .ins-popup-with-image-close-button{ display: block !important;}.ins-preview-wrapper-3605 #ins-lead-collection-on-overlay .ins-copy-to-clipboard{ overflow: hidden; line-height: 35px; text-align: center;}.ins-preview-wrapper-3605 #ins-lead-collection-on-overlay .ins-checkbox-text .ins-element-content{ text-align: left;}.ins-preview-wrapper-3605.insFocusActivate{ top: 0; bottom: inherit;}.ins-preview-wrapper-3605.insFocusInActivate{ bottom: 0; top: inherit;}.ins-preview-wrapper-3605 .ins-element-close-button .ins-element-content{ color: #242E34; cursor: pointer; font-size: 28px; line-height: 28px; width: 28px; font-family: Arial, sans-serif; text-align: center;}.ins-preview-wrapper-3605 .ins-content-wrapper #ins-lead-collection-on-overlay .ins-template-image{ width: 100px; height: 100px; position: relative; z-index: 9999; left: -1px; }.ins-preview-wrapper-3605 .ins-content-wrapper #ins-lead-collection-on-overlay .ins-template-image img{ width: 100px; height: 100px;}.ins-preview-wrapper-3605 .ins-disable-collect-email{ margin: 0px 0 -34px 0 !important;}.ins-preview-wrapper-3605 .ins-wheel-slice-overlay{ width: 280px; height: 280px; left: 10px; top: 10px; position: relative; overflow: hidden; border-radius: 50% !important;}.ins-preview-wrapper-3605 div[data-required-question=false] .ins-required-indicator{ display: none;}.ins-preview-wrapper-3605 [data-element-name="E-mail Opt-in Policy"],.ins-preview-wrapper-3605 [data-element-name="GDPR Policy"]{ color: black;}.ins-preview-wrapper-3605 #ins-slide-page-1,.ins-preview-wrapper-3605 #ins-slide-page-1 .ins-coupon-text{ color: #000000;}.ins-preview-wrapper-3605 .ins-checkbox-text div[role="textbox"]{ height: 24px; width: 562px; font-family:   "Open Sans"; font-weight: 300; line-height: 24px; text-align: center; display: inline;}.ins-preview-wrapper-3605 .ins-checkbox-text .ins-element-editable{ height: 24px; width: 562px; font-family: "Open Sans"; font-weight: 300; line-height: 24px; text-align: center; display: inline;}.ins-preview-wrapper-3605 .ins-checkbox-text .ins-element-content a{ color: inherit !important;}.ins-preview-wrapper-3605 .ins-checkbox-text .ins-element-content a:hover{ color: inherit !important;}.ins-preview-wrapper-3605 .ins-lead-collection-on-overlay-title{ height: 65px !important; width: 660px !important; color: #FFFFFF !important; font-family: "Open Sans"; font-size: 50px !important; font-weight: 400 !important; line-height: 65px !important;}.ins-preview-wrapper-3605 .ins-lead-collection-on-overlay-title a,.ins-preview-wrapper-3605 #text-1545222272235 a,.ins-preview-wrapper-3605 .ins-lead-collection-on-overlay-description a,.ins-preview-wrapper-3605 #ins-wrap-text-1545222281223 a,.ins-preview-wrapper-3605 #thanks-button-1545222264763 a,.ins-preview-wrapper-3605 #text-1545222252207 a,.ins-preview-wrapper-3605 #ins-editable-text-1545222238023 a{ color: unset !important;}.ins-preview-wrapper-3605 .ins-lead-collection-on-overlay-description{ height: 48px !important; width: 642px !important; color: #FFFFFF !important; font-family: "Open Sans"; font-size: 18px !important; line-height: 24px !important; text-align: center !important;}.ins-preview-wrapper-3605 .ins-dynamic-country-code .ins-phone-country-code-content span,.ins-preview-wrapper-3605 .ins-dynamic-country-code .ins-phone-country-code-content i{ color: #FFFFFF; font-family: "Open Sans"; font-size: 20px; font-weight: 600; letter-spacing: 0.38px; line-height: 27px;}.ins-preview-wrapper-3605 .ins-dynamic-country-code .ins-phone-country-code-content i{ color: #716e6e !important;}.ins-preview-wrapper-3605 input[id*="ins-dynamic-phone"]{ text-indent: 108px;}.ins-preview-wrapper-3605 .ins-dynamic-country-code,.ins-preview-wrapper-3605 .ins-dynamic-country-code div{ top: 15px !important; left: 19px !important; width: 100px !important;}.ins-preview-wrapper-3605 #coupon-1545222259341{ height: 37px; width: 176px; color: #F8E71C; font-family: "Open Sans"; font-size: 18px; font-weight: bold; line-height: 27px; text-align: center;}.ins-preview-wrapper-3605 #wrap-coupon-1545222259341{ height: 37px; width: 176px;}.ins-preview-wrapper-3605 #coupon-1545222259341{ height: 37px; width: 176px; color: #F8E71C; font-family: "Open Sans"; font-size: 18px; font-weight: bold; line-height: 27px; text-align: center;}.ins-preview-wrapper-3605 #wrap-coupon-1545222259341{ height: 37px; width: 176px;}.ins-preview-wrapper-3605 #thanks-button-1545222264763{ height: 27px; width: 176px; color: #FFFFFF; font-family: "Open Sans"; font-size: 18px; font-weight: bold; line-height: 27px; text-align: center;}.ins-preview-wrapper-3605 .ins-copy-button-container{ width:176px;}.ins-preview-wrapper-3605 #ins-editable-text-1545222238023 a,.ins-preview-wrapper-3605 .ins-thank-you-main-title{ margin-top: 20px; color: #ffffff !important;}.ins-preview-wrapper-3605 #text-1545222238023{ color: #ffffff;}.ins-preview-wrapper-3605 #button-1543161743946{ height: 100%; width: 100%; margin: 0 auto; opacity: 1; background-color: #FFC80A !important; display: flex; justify-content: center; align-items: center; color: #242E34; font-family: "Open Sans"; font-size: 26px; font-weight: bold; line-height: 36px;}.ins-preview-wrapper-3605 .thank-you-coupon-container,.ins-preview-wrapper-3605 .thank-you-text-container{ display: flex !important; flex-direction: column; justify-content: center; align-items: center;}.ins-preview-wrapper-3605 #text-1545222252207,.ins-preview-wrapper-3605 #ins-wrap-text-1545222281223{ height: 48px; width: 100%; color: #FFFFFF !important; font-family: "Open Sans"; font-size: 18px; line-height: 24px; text-align: center;}.ins-preview-wrapper-3605 #text-1545222281223 a{ width: 50%;}.ins-preview-wrapper-3605 #ins-wrap-text-1545222252207{ max-width: 560px;}.ins-preview-wrapper-3605 .ins-slider-padding{ display: flex !important; flex-direction: column; justify-content: center; align-items: center;}.ins-preview-wrapper-3605 #ins-link-button-1543161743946{ width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;}.ins-preview-wrapper-3605 #ins-link-button-1543161743946 div{ width: 100%;}.ins-preview-wrapper-3605 #thanks-button-1545222264763{ background-color: transparent !important;}.ins-preview-wrapper-3605 #close-button-1545222288830{ color: #ffffff;}.ins-preview-wrapper-3605 #ins-wrap-button-1543161743946{ text-align: center;}.ins-preview-wrapper-3605 #ins-wrap-button-1543161743946{ text-align: center; margin-top: 0 !important; width: 31% !important; height: 38px; opacity: 0;}.ins-preview-wrapper-3605 #ins-link-button-1543161743946 div{ width: 100%; height: 100%;}.ins-preview-wrapper-3605 #ins-wrap-question-1555414466168{ margin-top: -10px !important;}.ins-preview-wrapper-3605 #ins-question-group-form input{ outline: none; background: transparent !important;}.ins-preview-wrapper-3605 #ins-wrap-question-1545222171109{ margin-bottom: 0 !important; margin-top: 68px !important;}.ins-preview-wrapper-3605 .ins-slider-padding > div{ padding: 2px; width: 65%; max-width: 625px;}.ins-preview-wrapper-3605 .ins-slider-padding.form-container{ height: 100%;}.ins-preview-wrapper-3605 .ins-slider-page{ height: 100%;}.ins-preview-wrapper-3605 .ins-slider-container{ height: 100% !important;}.ins-preview-wrapper-3605 .ins-slider{ height: 100%;}.ins-preview-wrapper-3605 form{ height: 600px;}.ins-preview-wrapper-3605 #ins-wrap-question-1555414466168{ margin-top: -10px !important; margin-left: 60px;}.ins-preview-wrapper-3605 div[id^="wrap-close-button"]{ position: absolute; z-index: 7; top: 14px; right: 11px;}.ins-preview-wrapper-3605 .ins-content-wrapper #ins-lead-collection-on-overlay .ins-template-image img{ width: 600px; height: 600px; margin-top: -33px; margin-left: -250px}.ins-preview-wrapper-3605 ins-preview-wrapper .ins-content-wrapper #ins-lead-collection-on-overlay .ins-template-image{ width: 600px; height: 600px; position: relative; z-index: 9999; left: -1px;}.ins-preview-wrapper-3605 .ins-dynamic-input-reference .ins-selectable-element{ position: relative; border-radius: 40px !important;}</style>
         <script src="{{ asset('images/clipboard.min.js')}}" async="" charset=""></script>
@@ -137,7 +162,7 @@
     
     </head>
     <body dir="ltr">
-        <form method="post" action="./" id="form1">
+      
             <input type="hidden" name="header_ScriptManager1_HiddenField" id="header_ScriptManager1_HiddenField" value="">
             
            
@@ -206,12 +231,18 @@
                                     <div class="col-11 col-md-12">
                                         <div class="mobile-hide" style="height:25px;"></div>
                                         <div style="position: relative; padding-bottom: 5px; right: 1px;">
-                                            <div style="position: absolute; right: 1px; top: 2px;">
-                                                <input name="sdfsd" type="text"  class="form-control" placeholder=" Bạn cần tìm gì" id="kws">
-                                            </div>
-                                            <div style="position: absolute; right: 6px; top: 7px;">
-                                                <input type="image" name="ctl00$header$ImageButton1" id="header_ImageButton1" src="images/search-bt.png">
-                                            </div>
+
+                                            <form method="GET" action="{{ route('search-product-frontend') }}">
+                                                <div style="position: absolute; right: 1px; top: 2px;">
+                                                    <input name="key" type="text"  class="form-control" placeholder=" Bạn cần tìm gì" id="kws">
+                                                </div>
+                                                <div style="position: absolute; right: 3px; top: 4px;">
+                                                    <button type="submit"><img  src="images/search-bt.png"></button>
+                                                    
+                                                </div>
+
+                                            </form>
+                                            
                                         </div>
                                     </div>
                                 </div>
@@ -1201,68 +1232,38 @@
 
             <!-- popup  footer -->
 
+
+        <?php  
+
+
+            $userClient = session()->get('status-login');
+
+           
+            $popup = App\Models\popup::find(4);
+            
+        ?>
+        <!-- popup quảng cáo  -->
+
+        @if($popup->active==1)
+
+        @if($popup->option ==1)
+
             
             <div id="popup-allpage" class="popup-allpage popup-allpage-active" style="display: block;">
                 <div class="popup-allpage-item">
                     <div class="boxbanner-8">
-                    </div>
-                    <a class="popup-allpage-close" href="javascript:;" title="Đóng lại"></a>
-                </div>
-                </div>
-                <div id="popup-footer" class="popup-footer" style="display: none;">
-                <div class="popup-footer-item">
-                    <div class="boxbanner-7">
-                        <div class="banner-list">
-                            <div class="item banner-item banner-item-1">
-                                <a target="&quot;_blank&quot;" href="#" data-id="2157">
-                                    <picture>
-                                        <source srcset="https://3tkshop.vn/Images/banner/banner-slide-3tk-1.jpg" type="image/jpeg">
+                        <a href="{{ $popup->link }}">
+                            <img src="{{ asset( $popup->image) }}" alt="Sale 11.11" width="&quot;375&quot;" height="&quot;160&quot;">
+                        </a>
                         
-                                            <img src="https://3tkshop.vn/Images/banner/banner-slide-3tk-1.jpg" alt="Sale 11.11" width="&quot;375&quot;" height="&quot;160&quot;">
-                                    </picture>
-
-                                    
-                                    <span class="banner-item-view banner-item-view-2157" style="display: none;"></span>
-                                </a>
-                            </div>
-                        </div>
                     </div>
-                    <a class="popup-footer-close" href="javascript:;" title="Đóng lại"></a><a class="popup-footer-show"
-                        href="javascript:;" title="Mở" style="display: block;"></a>
-                </div>
-                </div>
-                <div id="shippingAddModal" class="modal fade" tabindex="-1" role="dialog">
-                <div class="modal-dialog modal-md">
-                    <div class="modal-content">
-                    </div>
-                </div>
-                </div>
-                <div id="inventoryModal" class="modal fade" tabindex="-1" role="dialog">
-                <div class="modal-dialog modal-md">
-                    <div class="modal-content">
-                    </div>
-                </div>
-                </div>
-                <div id="shopModal" class="modal fade" tabindex="-1" role="dialog">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                    </div>
-                </div>
-                </div>
-                <div id="shopModalFlashSalePrice" class="modal fade" tabindex="-1" role="dialog">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                    </div>
+                    <a class="popup-allpage-close" href="javascript:;" title="Đóng lại">X</a>
                 </div>
             </div>
+                
+        @endif
 
-
-
-
-
-
-
-
+        @endif 
 
             <script>
                 window.eSwGlobalSetting = {};
@@ -1303,7 +1304,14 @@
 
             <script type="text/javascript">
 
+                $('.popup-allpage').addClass('opacity-background');
 
+                $('.popup-allpage-close').click(function(){
+
+                    $('#popup-allpage').hide();
+
+                });
+                
                 $(function() {
                     $("#kws").autocomplete({
 
@@ -1382,6 +1390,6 @@
             @stack('script')
 
 
-        </form>
+       
     </body>
 </html>

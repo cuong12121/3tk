@@ -49,7 +49,7 @@
                                 </a>
                             </li>
                             <li class="breadcrumb-item active">
-                                <h1>{{ $name_cate }}</h1>
+                                <h1>{{ @$name_cate }}</h1>
                             </li>
                         </ol>
                     </nav>
@@ -89,7 +89,7 @@
                 </ul>
             </div>
             
-            {!! $slogan !!}
+            {!! @$slogan !!}
         </div>
         <div class="clearfix pt-3">
         </div>
@@ -100,7 +100,7 @@
                         <ul class="list-unstyled wrapbox-pNavCate wrapbox-pNavCates">
                             <li class="wrapbox-getProducts active" data-w="3" data-cid="17">
                                 <h3>
-                                    <a href="" style="text-transform: uppercase; font-size: 13pt;">{{ $name_cate }}</a>
+                                    <a href="" style="text-transform: uppercase; font-size: 13pt;">{{ @$name_cate }}</a>
                                 </h3>
                             </li>
                             <li><b>Sắp xếp theo:</b></li>
@@ -143,18 +143,29 @@
                                         <div class="yith-wcan-filter filter-tax checkbox-design" id="filter_768_0" data-filter-type="tax" data-filter-id="0" data-taxonomy="yith_product_brand" data-multiple="yes" data-relation="or">
                                             <h4 class="filter-title">{{ $filters->name }}</h4>
                                             <div class="filter-content">
+
+                                                <style type="text/css">
+                                                    label:before{
+                                                        background-color: red;
+                                                    }
+
+
+                                                </style>
                                                 <ul class="filter-items filter-checkbox  level-0">
+
+
 
                                                     @if(isset($propertyId))
                                                     @foreach($propertyId as $property)
                                                     <li class="filter-item checkbox  level-0">
-                                                        <label for="filter_768_0_169">
+                                                        <label for="box_{{ $property->id }}">
                                                             <input type="checkbox" id="box_{{ $property->id }}" name="filter" value="{{ $property->id }}" data-id="{{ $filters->id }}" class="box_click">
 
-                                                            <a href="" role="button" class="term-label">
+                                                            
+                                                        </label>
+                                                        <a href="" role="button" class="term-label">
                                                                 {{ $property->name}}                 
                                                             </a>
-                                                        </label>
                                                     </li>
                                                     @endforeach
                                                     @endif
@@ -291,7 +302,7 @@
                
                 filter:filterss,
                 propertys: propertyss,
-                link:'{{ $link }}',
+                link:'{{ @$link }}',
                 group_id:'{{ @$id_cate  }}'
             },
 

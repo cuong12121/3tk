@@ -97,7 +97,11 @@
                                         <span style="color: Red; font-size: 8pt; font-weight: bold;">₫</span>
                                         
                                     </td>
-                                    <td style="height:16px;"><input type="image" src="{{ asset('icon/capnhat2.png')  }}" onclick="javascript:__doPostBack('ctl00$ContentPlaceHolder1$grdGioHang','CapNhat$0');return false;"></td>
+                                    <td style="height:16px;">
+                                        <button type="submit">
+                                            <img src="{{ asset('icon/capnhat2.png')  }}">
+                                        </button>
+                                       
 
                                     <td style="height:16px;">
                                         <img src="{{ asset('icon/xoa.png')}}" onclick="removeProductCart('{{ $data->rowId }}')" class="remove-cart">
@@ -165,87 +169,89 @@
                     </div>
                 </div>
                 <div class="col-md-6" style="padding:5px;">
+                    <form method="post" action="{{ route('order') }}">
+                        @csrf
+                        <div style="border: 1px solid #dddddd; border-radius: 5px; font-size: 10pt;">
+                            <div style="background-color: #f9f9f9; border-bottom: 1px solid #dddddd; border-radius: 5px 5px 0 0;">
+                                <div style="font-size: 12pt; font-weight: bold; padding: 8px; text-transform: uppercase;">
+                                    <img src="images/icon-user.png" height="20">
+                                    Thông tin mua hàng
+                                </div>
+                            </div>
+                            <div style="padding: 5px 20px 20px 20px; background-color: #fbf9f9;">
+                                <p style="padding: 0 0 10px 0; color: #00aae2;">
+                                    - Quý khách vui lòng điền đầy đủ thông tin để giao hàng.<br>
+                                    - Ký hiệu (*) là ô bắt buộc nhập
+                                </p>
+                                <span id="ContentPlaceHolder1_lbldonggoi"></span>
+                                <div class="row">
+                                    <div class="col-md-6" style="padding:5px;">
+                                        <div class="row">
+                                            <div class="col-md-12" style="padding:5px;">
+                                                <input name="name" type="text" id="ContentPlaceHolder1_txthoten" class="form-control" placeholder=" Họ tên(*)" required>
+                                            </div>
+                                            <div class="col-md-12" style="padding:5px;">
+                                                <input name="phone_number" type="text" id="ContentPlaceHolder1_txttel" class="form-control" placeholder=" Điện thoại(*)" required>
+                                            </div>
+                                            <div class="col-md-12" style="padding:5px;">
+                                                <input name="mail" type="text" id="ContentPlaceHolder1_txtemail" class="form-control" placeholder=" Nhập email để nhận thông tin đơn(*)" required>
+                                            </div>
+                                            <div class="col-md-12" style="padding:5px;">
+                                                <input name="address" type="text" id="ContentPlaceHolder1_txtdiachi" class="form-control" placeholder=" Địa chỉ" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6" style="padding:10px 5px;">
+                                       
+                                        <div style="padding:5px 5px 0 5px;">
+                                            <b>HÌNH THỨC THANH TOÁN</b>
+                                        </div>
+                                        <div style="padding:5px;">
+                                            
+                                                <option value=" Thanh toán khi giao hàng (COD)"> Thanh to&#225;n khi giao h&#224;ng (COD)</option>
+                                               
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <div style="background-color: #f9f9f9; border-bottom: 1px solid #dddddd; border-top: 1px solid #dddddd;">
+                                <div style="font-size: 12pt; font-weight: bold; padding: 8px; text-transform: uppercase;">
+                                    <img src="/images/icon-tt.png" height="20" />
+                                    Hình thức thanh toán
+                                </div>
+                                </div>
+                                <div style="padding: 15px; font-size: 9pt; line-height: 28px;">
+                                <div class="pay-info-body">
+                                    <div class="pay-info-text">
+                                        <div class="payment">
+                                            <input type="radio" data-link="paymentType" id="payment1" name="payment" value="Giao hàng và thu tiền tại nhà"
+                                                checked="checked">
+                                            <label for="payment1">
+                                                <span></span>Giao hàng và thu tiền tại nhà</label>
+                                        </div>
+                                        <div class="payment">
+                                            <input type="radio" data-link="paymentType" id="payment3" name="payment" value="Chuyển khoản qua máy ATM & Ngân hàng">
+                                            <label for="payment3">
+                                                <span></span>Chuyển khoản qua máy ATM & Ngân hàng</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div> -->
+                        </div>
+                        <div style="text-align: right; padding-top: 10px;">
+                            <input type="image" name="ctl00$ContentPlaceHolder1$ImageButton1" id="ContentPlaceHolder1_ImageButton1" src="images/gui-don-hang.png" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$ContentPlaceHolder1$ImageButton1&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, false))">
+                        </div>
+                        <div style="text-align: right; padding-top:13px;">
+                            <a href="san-pham.html" style="color: #0598c8;">
+                            <img src="images/pre1.png">
+                            Chọn thêm sản phẩm khác</a>
+                            <br>
+                            &nbsp;<br>
+                            &nbsp;
+                        </div>
+                    </form>
                     <br>
-                    <div style="border: 1px solid #dddddd; border-radius: 5px; font-size: 10pt;">
-                        <div style="background-color: #f9f9f9; border-bottom: 1px solid #dddddd; border-radius: 5px 5px 0 0;">
-                            <div style="font-size: 12pt; font-weight: bold; padding: 8px; text-transform: uppercase;">
-                                <img src="images/icon-user.png" height="20">
-                                Thông tin mua hàng
-                            </div>
-                        </div>
-                        <div style="padding: 5px 20px 20px 20px; background-color: #fbf9f9;">
-                            <p style="padding: 0 0 10px 0; color: #00aae2;">
-                                - Quý khách vui lòng điền đầy đủ thông tin để giao hàng.<br>
-                                - Ký hiệu (*) là ô bắt buộc nhập
-                            </p>
-                            <span id="ContentPlaceHolder1_lbldonggoi"></span>
-                            <div class="row">
-                                <div class="col-md-6" style="padding:5px;">
-                                    <div class="row">
-                                        <div class="col-md-12" style="padding:5px;">
-                                            <input name="ctl00$ContentPlaceHolder1$txthoten" type="text" id="ContentPlaceHolder1_txthoten" class="form-control" placeholder=" Họ tên(*)" required>
-                                        </div>
-                                        <div class="col-md-12" style="padding:5px;">
-                                            <input name="ctl00$ContentPlaceHolder1$txttel" type="text" id="ContentPlaceHolder1_txttel" class="form-control" placeholder=" Điện thoại(*)" required>
-                                        </div>
-                                        <div class="col-md-12" style="padding:5px;">
-                                            <input name="ctl00$ContentPlaceHolder1$txtemail" type="text" id="ContentPlaceHolder1_txtemail" class="form-control" placeholder=" Nhập email để nhận thông tin đơn(*)" required>
-                                        </div>
-                                        <div class="col-md-12" style="padding:5px;">
-                                            <input name="ctl00$ContentPlaceHolder1$txtdiachi" type="text" id="ContentPlaceHolder1_txtdiachi" class="form-control" placeholder=" Địa chỉ" required>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6" style="padding:10px 5px;">
-                                    <textarea name="ctl00$ContentPlaceHolder1$txtnoidung" rows="2" cols="20" id="ContentPlaceHolder1_txtnoidung" class="form-control" placeholder=" Nội dung yêu cầu">
-                                    </textarea>
-                                    <div style="padding:5px 5px 0 5px;">
-                                        <b>HÌNH THỨC THANH TOÁN</b>
-                                    </div>
-                                    <div style="padding:5px;">
-                                        <select name="ctl00$ContentPlaceHolder1$drhinhthuc" id="ContentPlaceHolder1_drhinhthuc" class="form-control">
-                                            <option value=" Thanh toán khi giao hàng (COD)"> Thanh to&#225;n khi giao h&#224;ng (COD)</option>
-                                            <option value=" Chuyển khoản Ngân hàng"> Chuyển khoản Ng&#226;n h&#224;ng</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- <div style="background-color: #f9f9f9; border-bottom: 1px solid #dddddd; border-top: 1px solid #dddddd;">
-                            <div style="font-size: 12pt; font-weight: bold; padding: 8px; text-transform: uppercase;">
-                                <img src="/images/icon-tt.png" height="20" />
-                                Hình thức thanh toán
-                            </div>
-                            </div>
-                            <div style="padding: 15px; font-size: 9pt; line-height: 28px;">
-                            <div class="pay-info-body">
-                                <div class="pay-info-text">
-                                    <div class="payment">
-                                        <input type="radio" data-link="paymentType" id="payment1" name="payment" value="Giao hàng và thu tiền tại nhà"
-                                            checked="checked">
-                                        <label for="payment1">
-                                            <span></span>Giao hàng và thu tiền tại nhà</label>
-                                    </div>
-                                    <div class="payment">
-                                        <input type="radio" data-link="paymentType" id="payment3" name="payment" value="Chuyển khoản qua máy ATM & Ngân hàng">
-                                        <label for="payment3">
-                                            <span></span>Chuyển khoản qua máy ATM & Ngân hàng</label>
-                                    </div>
-                                </div>
-                            </div>
-                            </div> -->
-                    </div>
-                    <div style="text-align: right; padding-top: 10px;">
-                        <input type="image" name="ctl00$ContentPlaceHolder1$ImageButton1" id="ContentPlaceHolder1_ImageButton1" src="images/gui-don-hang.png" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$ContentPlaceHolder1$ImageButton1&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, false))">
-                    </div>
-                    <div style="text-align: right; padding-top:13px;">
-                        <a href="san-pham.html" style="color: #0598c8;">
-                        <img src="images/pre1.png">
-                        Chọn thêm sản phẩm khác</a>
-                        <br>
-                        &nbsp;<br>
-                        &nbsp;
-                    </div>
+                    
                 </div>
             </div>
         </div>

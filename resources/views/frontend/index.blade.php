@@ -10,6 +10,16 @@
     #ContentPlaceHolder1_Datalist291_Labelgia19_0 font{
         font-weight: bold;
     }
+
+    .option-sg a{
+        background: yellow !important;
+    }
+
+    .option-sg .option-sale span{
+        font-size: 19px;
+        font-weight: bold;
+        font-style: italic;
+    }
 </style>
 
 <div class="body-content bg-page">

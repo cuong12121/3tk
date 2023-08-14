@@ -28,7 +28,7 @@ class showController extends Controller
 
             $name = time() . '_' . $file_upload->getClientOriginalName();
 
-            $filePath = $file_upload->storeAs('images/banner-popup', $name, 'ftp');
+            $filePath = $file_upload->storeAs('images/banner-popup', $name, 'public');
 
             $input['image'] = $filePath;
         }

@@ -223,6 +223,35 @@
 ?>
 
 
+<style type="text/css">
+    .crazy-deal-details.pc {
+    margin: 8px;
+    height: 29px;
+    overflow: hidden;
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.crazy-deal-details-right {
+    position: relative;
+    margin-left: 167px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.crazy-deal-details-countdown {
+    font-weight: bold;
+}
+
+.clock{
+    font-weight: bold;
+}
+</style>
+
 
 
 <div class="body-content bg-page clearfix">
@@ -336,6 +365,11 @@
                                                         <span id="ContentPlaceHolder1_Repeater2_Labelgia191_0"><font size="4"></font></span>
                                                     </p>
                                                 </div>
+
+                                                @if(!empty($text))
+                                                <div class="crazy-deal-details pc" style="background-image:url('https://dienmaynguoiviet.vn/images/template/flashsale.png'); height:38px"> <div class="crazy-deal-details-right"> <time class="crazy-deal-details-countdown" data-spm-anchor-id="a2o4n.pdp_revamp.0.i0.89db8552daSXV6">Kết thúc sau <span class="crazy-deal-details-countdown-time clock">31:19:10</span></time>  </div> </div>
+
+                                                @endif
                                             </div>
                                             <span id="ContentPlaceHolder1_chkmau">
 
@@ -707,5 +741,132 @@
             });
         }    
     }
+
+     @if(!empty($text))
+
+        // đếm thời gian 
+
+         //document.getElementById('svg').innerHTML = xmlSvg;
+                                        
+        time = '{{ @$timestamp }}';
+        number_deal_product =10;
+        //in time 
+        var h = 12;
+        var i = 0;
+        var s = 0;
+    
+        amount = time //calc milliseconds between dates
+        days = 0;
+        hours = 0;
+        mins = 0;
+        secs = 0;
+        out = "";
+    
+    
+        hours = Math.floor(amount / 3600);
+        amount = amount % 3600;
+        mins = Math.floor(amount / 60);
+        amount = amount % 60;
+        secs = Math.floor(amount);
+            
+            
+    
+    
+        //time run 
+        if(parseInt(time)>0 && parseInt(number_deal_product)>0){
+         h = hours;
+          m = mins;
+          s = secs;
+        }   
+        else{
+            let today =  new Date();
+            h = 99 - parseInt(today.getHours());
+            m = 59 - parseInt(today.getMinutes());
+            s = 59 - parseInt(today.getSeconds());
+            
+        }
+
+        start();    
+        function start()
+        {
+
+              /*BƯỚC 1: LẤY GIÁ TRỊ BAN ĐẦU*/
+              if (h === null)
+              {
+                  h = parseInt($('.hour').text());
+
+              }
+
+              /*BƯỚC 1: CHUYỂN ĐỔI DỮ LIỆU*/
+              // Nếu số giây = -1 tức là đã chạy ngược hết số giây, lúc này:
+              //  - giảm số phút xuống 1 đơn vị
+              //  - thiết lập số giây lại 59
+              if (s === -1){
+                  m -= 1;
+                  s = 59;
+              }
+
+              // Nếu số phút = -1 tức là đã chạy ngược hết số phút, lúc này:
+              //  - giảm số giờ xuống 1 đơn vị
+              //  - thiết lập số phút lại 59
+              if (m === -1){
+                  h -= 1;
+                  m = 59;
+              }
+
+              // Nếu số giờ = -1 tức là đã hết giờ, lúc này:
+              //  - Dừng chương trình
+              if (h == -1){
+
+                $('.crazy-deal-details').remove();
+
+                $('.pdetail-price b').remove();
+                $('.pdetail-price-box b').remove();
+                priceChange = '{{  str_replace(',' ,'.', number_format($price_old))  }}'   ;
+                $('.pdetail-price-box h3').text(priceChange);
+
+              }
+
+
+
+              /*BƯỚC 1: HIỂN THỊ ĐỒNG HỒ*/
+
+
+
+              var hour =  h.toString();
+
+              var seconds =  s.toString();
+
+              var minutes =  m.toString();
+
+
+
+              // $('.hourss').text(h<10?'0'+hour:''+hour);
+              // $('.secondss').text(s<10?'0'+seconds:''+seconds);
+              // $('.minutess').text(m<10?'0'+minutes:''+minutes);
+
+            let currentHour = h<10?'0'+hour:''+hour;
+            let currentMinutes = m<10?'0'+minutes:''+minutes;
+            let currentSeconds = s<10?'0'+seconds:''+seconds;
+
+    
+            let currentTimeStr =currentHour + ":" + currentMinutes + ":" + currentSeconds;
+
+          
+
+            $('.clock').html(currentTimeStr);
+
+              // Insert the time string inside the DOM
+           
+
+              /*BƯỚC 1: GIẢM PHÚT XUỐNG 1 GIÂY VÀ GỌI LẠI SAU 1 GIÂY */
+              timeout = setTimeout(function(){
+                  s--;
+                  start();
+
+
+              }, 1000);
+        }
+    @endif 
 </script>
 @endsection
