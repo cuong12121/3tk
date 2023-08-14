@@ -222,7 +222,11 @@
             <div class="modal-body">
                 <div class="content px-3">
 
-                    <?php $metaSeo = App\Models\metaSeo::find(5959); ?>
+
+
+                    <?php 
+
+                    $metaSeo = App\Models\metaSeo::find(1); ?>
 
                     @include('adminlte-templates::common.errors')
 

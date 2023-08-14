@@ -229,19 +229,152 @@
             </div>
         </div>
 
-        @if(!empty($product_sale)&&$product_sale->count()>0)
+        <style type="text/css">
+
+/*            flashsale*/
+            
+            .option-sg{
+                background: #E9162E;
+                padding: 10px 0;
+                text-align: center;
+            }
+
+            .option-sg a {
+                display: inline-block;
+                vertical-align: middle;
+                width: 218px;
+                margin: 0 20px 0 0;
+                background: #fff;
+                border-radius: 8px;
+                height: 70px;
+/*                padding: 8px 0;*/
+            }
+
+
+
+            .time-cd {
+                width: 100%;
+                text-align: center;
+                display: flex;
+                align-items: center;
+            }
+
+            
+            .time-cd span.seconds span {
+                font-size: 14px;
+                font-weight: normal;
+                line-height: 16px;
+                color: #ffffff;
+                display: block;
+                margin: 3px 0 0 0;
+            }
+
+            .time-cd span.hours, .time-cd span.minutes, .time-cd span.seconds {
+                width: 48px;
+                height: 55px;
+                display: block;
+                align-items: center;
+                border-radius: 8px;
+                background-color: #101010;
+                font-size: 24px;
+                font-weight: bold;
+                color: #ffffff;
+                padding: 3px 0 0 0;
+            }
+            .time-cd span.seconds{
+                width: 48px;
+                height: 55px;
+                display: block;
+                align-items: center;
+                border-radius: 8px;
+                background-color: #101010;
+                font-size: 24px;
+                font-weight: bold;
+                color: #ffffff;
+                padding: 3px 0 0 0;
+            }
+
+            .time {
+                display: flex;
+                margin-left: 48px;
+            }
+            
+        </style>
+
+
+        <?php 
+
+
+            $now  = Carbon\Carbon::now();
+            $deal = Cache::get('deals')->sortByDesc('order');
+
+            if(!empty($deal)){
+
+                $timeDeal_star =$deal->first()->start;
+
+                $timeDeal_star =  \Carbon\Carbon::create($timeDeal_star);
+
+                $timeDeal_end = $deal->first()->end;
+
+                $timeDeal_end =  \Carbon\Carbon::create($timeDeal_end);
+
+                $timestamp = $now->diffInSeconds($timeDeal_end);
+            }
+
+
+        ?>
+
+         <?php 
+            $deal_active = 1;
+
+            $ar_Deal_Pd = [];
+
+        ?>
+
+        @if(!empty($deal_check) && $deal_check->count()>0 && $now->between($deal_check[0]->start, $deal_check[0]->end) && $deal_active ===1)
+
+
         <div class="row">
             <div class="col-12">
+                <div class="option-sg"> 
+                    <a href="javascript:;" data-is-recommend-tab="true" class="active option-sale" data-id="1"> 
+                        <img data-src="https://dienmaynguoiviet.vn/background/like2.png" class=" ls-is-cached lazyloaded" alt="Cho bạn" width="50" height="50" src="https://dienmaynguoiviet.vn/background/like2.png"> <span>Flash Sale</span> </a> 
+
+                </div>
                 <div class="product-bestseller">
                     <div class="boxbanner-4">
                         <div class="banner-list">
                         </div>
                     </div>
                     <div class="product-list pList-olw-4">
-                        @foreach($product_sale as $keys => $value)
-                        @if($value->active==1)
+
+                        <?php 
+
+                            $k = -1;
+                        ?>
+                        @foreach($deal as $key => $value)
+
+                        <?php 
+
+                            $k++;
+                        ?>
+
+
+                               
+                        @if( !empty($value->active) && $value->active ==1 && $now->between($value->start, $value->end))
+
+                        <?php 
+                            $timestamp = $now->diffInSeconds($value->end);
+                            $hour =  floor($timestamp/3600);
+                            $timestamp = floor($timestamp % 3600);
+                            $minutes =floor($timestamp/60);
+                            $timestamp = floor($timestamp % 60);
+                            $seconds =floor($timestamp);
+
+                            $ar_Deal_Pd[$value->product_id] = $value->deal_price;
+                        ?>
                         <div class="card mb-4">
-                            <a href="{{ route('details', $value->Link) }}" data-id="392" class="product-item">
+                            <a href="{{ route('details', $value->link) }}" data-id="392" class="product-item">
                                 <div class="card-img-top">
                                     <span class="product-type product-type-52" style="display: block; position: absolute;
                                         left: 9px; bottom: -5px; width: 145px; height: 22px; background-size: contain;
@@ -253,24 +386,49 @@
                                     <p class="product-brand" style="background: url( images/upload/Logo SJ-Official.png ) no-repeat left center;">
                                     </p>
                                     <picture>
-                                        <source srcset="{{ asset($value->Image) }}" type="image/webp">
-                                        <source srcset="{{ asset($value->Image) }}" type="image/jpeg">
-                                        <img loading="lazy" src="{{ asset($value->Image) }}" alt="Giày Bảo Hộ Lao Đông Bestrun S3">
+                                        <source srcset="{{ asset($value->image) }}" type="image/webp">
+                                        <source srcset="{{ asset($value->image) }}" type="image/jpeg">
+                                        <img loading="lazy" src="{{ asset($value->image) }}" alt="{{  $value->name }}">
                                         <span class="product-item-view product-item-view-392" style="display:none;"></span>
                                     </picture>
                                 </div>
                                 <div class="card-body">
                                     <h5 class="card-title product-name">
-                                        {{  $value->Name }}
+                                        {{  $value->name }}
                                     </h5>
                                     <p class="card-text product-price">
-                                        <span id="ContentPlaceHolder1_Datalist291_Labelgia19_0"><b><font size="5">{{  @str_replace(',' ,'.', number_format($value->Price))  }}</font></b></span>₫ <span class="product-price-regular"><span id="ContentPlaceHolder1_Datalist291_Labelgia191_0"></span></span>
+                                        <span id="ContentPlaceHolder1_Datalist291_Labelgia19_0"><b><font size="5">{{  @str_replace(',' ,'.', number_format($value->deal_price))  }}</font></b></span>₫ <span class="product-price-regular"><span id="ContentPlaceHolder1_Datalist291_Labelgia191_0"></span></span>
                                     </p>
                                     <div style="color: #515151;">
                                     </div>
                                     <div style="padding:5px; text-align:center;">
                                         <img src="icon/muangay2.png" height="35">
                                     </div>
+
+                                    <div class="time-cd time-fl time{{ $k }}">
+                                        <span class="timestamp" style="display: none;">{{   $now->diffInSeconds($value->end) }}</span> 
+                                        <div class="time">
+                                            <span class="hours">
+                                                <span class="hourss">{{ $hour }}</span> 
+                                                <div style="margin-top: 2px; width:100%; height:1px; background: #FF3647"></div>
+                                                <span>Giờ</span> 
+                                            </span>
+                                            <p style="font-size: 28px; line-height: 55px;font-weight: bold;color: #101010; margin: 0 7px">:</p>
+                                            <span class="hours">
+                                                <span class="minutess">{{ $minutes }}</span> 
+                                                <div style="margin-top: 2px; width:100%; height:1px; background: #FF3647"></div>
+                                                <span>phút</span> 
+                                            </span>
+                                            <p style="font-size: 28px; line-height: 55px;font-weight: bold;color: #101010; margin: 0 7px">:</p>
+                                            <span class="hours">
+                                                <span class="secondss">{{ $seconds }}</span> 
+                                                <div style="margin-top: 2px; width:100%; height:1px; background: #FF3647"></div>
+                                                <span>giây</span> 
+                                            </span>
+                                        </div>
+                                    </div>
+
+
                                 </div>
                             </a>
                         </div>
@@ -626,5 +784,100 @@
         </div>
     </div>
 </div>
+
+<script>
+
+     loop = {{ $deal->count() }};
+
+
+        times = [];
+                  
+        time = {{ $timestamp }};
+
+        number_deal_product =10;
+        //in time 
+      
+        // setInterval(function(){
+        //     for (var i = 0 ; i < loop; i++) {
+        //         run(i);
+        //     }
+
+        // }, 1000);
+
+
+        setInterval(function(){
+            run(1);
+
+        }, 1000);
+
+
+    
+    function run(key) {
+
+        var hour =  $('.time'+key+' .hourss').text();
+        var minutes =  $('.time'+key+' .minutess').text();
+        var second =  $('.time'+key+' .secondss').text();
+
+
+        h =  parseInt(hour);
+        m = parseInt(minutes);
+        s = parseInt(second);
+        s--;
+
+        
+
+
+        /*BƯỚC 1: CHUYỂN ĐỔI DỮ LIỆU*/
+          // Nếu số giây = -1 tức là đã chạy ngược hết số giây, lúc này:
+          //  - giảm số phút xuống 1 đơn vị
+          //  - thiết lập số giây lại 59
+        if (s === -1){
+              m -= 1;
+             
+              s = 59;
+        }
+
+        // Nếu số phút = -1 tức là đã chạy ngược hết số phút, lúc này:
+        //  - giảm số giờ xuống 1 đơn vị
+        //  - thiết lập số phút lại 59
+        if (m === -1){
+            h -= 1;
+            m = 59;
+        }
+
+        if (h < 0){
+            $('.time'+key).remove();
+
+            priceSet =  $('.desc-deal'+key+' .price-old').text();
+
+            $('.desc-deal'+key+' .price-old').css('text-decoration','none');
+
+            $('.desc-deal'+key+' .price-new').text(priceSet);
+
+        }  
+
+        hour =  h.toString();
+
+        minutes =  m.toString();
+        
+        seconds =  s.toString();
+
+        console.log(seconds);
+
+        //  $('.time'+key+' .hourss').text('');
+
+        // $('.time'+key+' .hourss').text(h<10?'0'+hour:''+hour);
+
+        // $('.time'+key+' .secondss').text('');
+
+        // $('.time'+key+' .secondss').text(s<10?'0'+seconds:''+seconds);
+
+        // $('.time'+key+' .minutess').text(''); 
+
+        // $('.time'+key+' .minutess').text(m<10?'0'+minutes:''+minutes);
+    }
+       
+
+</script>
 
 @endsection

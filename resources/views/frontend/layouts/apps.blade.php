@@ -1190,31 +1190,38 @@
                     </div>
                 </div>
             </div>
-            <!--  <div id="popup-allpage" class="popup-allpage popup-allpage-active" style="display: none;">
+
+
+            <!-- popup  footer -->
+
+            
+            <!-- <div id="popup-allpage" class="popup-allpage popup-allpage-active" style="display: none;">
                 <div class="popup-allpage-item">
                     <div class="boxbanner-8">
                     </div>
                     <a class="popup-allpage-close" href="javascript:;" title="Đóng lại"></a>
                 </div>
                 </div>
-                <div id="popup-footer" class="popup-footer" style="display: block;">
+                <div id="popup-footer" class="popup-footer" style="display: none;">
                 <div class="popup-footer-item">
                     <div class="boxbanner-7">
                         <div class="banner-list">
                             <div class="item banner-item banner-item-1">
                                 <a target="&quot;_blank&quot;" href="#" data-id="2157">
                                     <picture>
-                                <source srcset="/images/sale-1111_90e1b50b.png 1x" type="image/jpeg">
-                
-                                    <img src="/images/sale-1111_90e1b50b.png" alt="Sale 11.11" width="&quot;375&quot;" height="&quot;160&quot;">
-                            </picture>
+                                        <source srcset="https://3tkshop.vn/Images/banner/banner-slide-3tk-1.jpg" type="image/jpeg">
+                        
+                                            <img src="https://3tkshop.vn/Images/banner/banner-slide-3tk-1.jpg" alt="Sale 11.11" width="&quot;375&quot;" height="&quot;160&quot;">
+                                    </picture>
+
+                                    
                                     <span class="banner-item-view banner-item-view-2157" style="display: none;"></span>
                                 </a>
                             </div>
                         </div>
                     </div>
                     <a class="popup-footer-close" href="javascript:;" title="Đóng lại"></a><a class="popup-footer-show"
-                        href="javascript:;" title="Mở" style="display: none;"></a>
+                        href="javascript:;" title="Mở" style="display: block;"></a>
                 </div>
                 </div>
                 <div id="shippingAddModal" class="modal fade" tabindex="-1" role="dialog">
@@ -1240,7 +1247,16 @@
                     <div class="modal-content">
                     </div>
                 </div>
-                </div>-->
+            </div> -->
+
+
+
+
+
+
+
+
+
             <script>
                 window.eSwGlobalSetting = {};
                 window.eSwGlobalSetting.lang = 'vi-VN';

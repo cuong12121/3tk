@@ -160,13 +160,33 @@
   }
 }
 
-
 /*endstylemodal*/
 
-
-
-
 </style>
+
+<?php
+
+$groupProduct = DB::table('group_product')->select('name', 'link', 'id', 'product_id')->get();
+    
+
+    foreach($groupProduct as $groupProducts ){
+
+        if(!empty(json_decode($groupProducts->product_id))){
+
+            if(in_array($data['id'],json_decode($groupProducts->product_id))){
+
+                $groupName = $groupProducts->name;
+
+                $groupLink = $groupProducts->link;
+
+                $groupProductId =  $groupProducts->id;
+
+                
+            }
+        }
+    }
+?>
+
 <div class="body-content bg-page clearfix">
     <div class="container">
         <div class="wrap-product">
@@ -174,18 +194,20 @@
                 <nav>
                     <ol class="breadcrumb" itemscope="" itemtype="https://schema.org/BreadcrumbList">
                         <li class="breadcrumb-item" itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem">
-                            <a href="../index.htm" itemprop="item">
+                            <a href="{{ route('homeFe') }}" itemprop="item">
                                 <h2 itemprop="name">Trang chủ</h2>
                                 <meta itemprop="position" content="1">
                             </a>
                         </li>
+                         @if(!empty($groupLink))
                         <li class="breadcrumb-item">
-                            <a href="../giay-bao-ho-lao-dong-421.html">
+                            <a href="{{ route('details', $groupLink??'') }}">
                             <span>
-                            Giày Bảo Hộ Lao Động
+                                {{ @$groupName }}
                             </span>
                             </a>
                         </li>
+                        @endif
                     </ol>
                 </nav>
             </div>
@@ -292,7 +314,7 @@
                                             <br>
                                             <span id="ContentPlaceHolder1_chksize">
                                                
-                                                @if(isset($size_pd))
+                                                @if(isset($size_pd) && count($size_pd)>0)
 
                                                 @foreach($size_pd as $key => $val)
                                                 <input id="ContentPlaceHolder1_chksize_{{ $key }}" type="radio" name="ctl00$ContentPlaceHolder1$chksize" value="{{ @$val }}" class="click-selected-size">
@@ -463,6 +485,7 @@
     </div>
 </div>
 
+
 <script type="text/javascript">
 
     var modal = document.getElementById("myModal");
@@ -531,25 +554,32 @@
     function addCartFast(id) {
 
 
+         bugs = false;
+
         @if(!empty($color_product) && $color_product->count()>0)
+            
+            if(colors_selected.length===0){
 
-        if(colors_selected.length===0){
+                bugs = true;
 
-            alert('bạn chưa chọn màu sản phẩm');
-
-        } 
+                alert('bạn chưa chọn màu sản phẩm');
+            } 
 
         @endif
 
-        @if(isset($size_pd)) 
-        if(size_selected.length ===0){
+        @if(isset($size_pd) && count($size_pd)>0) 
+           
+            
+            if(size_selected.length ===0){
 
-            alert('bạn chưa chọn kích thước sản phẩm');
-        } 
+                bugs = true;
+
+                alert('bạn chưa chọn kích thước sản phẩm');
+            } 
 
         @endif 
 
-        if(colors_selected.length>0 && size_selected.length>0){
+        if(!bugs){
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -573,38 +603,65 @@
             });
 
         }
-       
-        
-        
         
     }
 
     function addToCart(id) {
-        
-         $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-    
-        $.ajax({
-            type: 'POST',
-            url: "{{ route('cart') }}",
-            data: {
-                product_id: id,
-                gift_check:''
-                   
-            },
-            beforeSend: function() {
-               
-                $('.loader').show();
 
-            },
-            success: function(result){
+        let bugs = false;
+
+        @if(!empty($color_product) && $color_product->count()>0)
+
+        
+        if(colors_selected.length===0){
+
+            bugs = true;
+            alert('bạn chưa chọn màu sản phẩm');
+        } 
+
+        @endif
+
+        @if(isset($size_pd) && count($size_pd)>0) 
+
+       
+        if(size_selected.length ===0){
+
+            bugs = true;
+
+            alert('bạn chưa chọn kích thước sản phẩm');
+        } 
+
+        @endif 
+
     
-                window.location.href = "{{ route('cart-details') }}";
-            }
-        });
+        if(!bugs){
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+        
+            $.ajax({
+                type: 'POST',
+                url: "{{ route('cart') }}",
+                data: {
+                    product_id: id,
+                    gift_check:''
+                       
+                },
+                beforeSend: function() {
+                   
+                    $('.loader').show();
+
+                },
+                success: function(result){
+        
+                    window.location.href = "{{ route('cart-details') }}";
+                }
+
+            });
+        }    
     }
 </script>
 @endsection
