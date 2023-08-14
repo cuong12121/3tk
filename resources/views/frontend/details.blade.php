@@ -166,7 +166,7 @@
 
 <?php
 
-$groupProduct = DB::table('group_product')->select('name', 'link', 'id', 'product_id')->get();
+    $groupProduct = DB::table('group_product')->select('name', 'link', 'id', 'product_id')->get();
     
 
     foreach($groupProduct as $groupProducts ){
@@ -185,7 +185,45 @@ $groupProduct = DB::table('group_product')->select('name', 'link', 'id', 'produc
             }
         }
     }
+
+    $check_deal =  Cache::get('deals')->where('product_id', $data->id);
+
+    $now = \Carbon\Carbon::now();
+   
+    if(!empty($check_deal)){
+
+        $check_deal =  $check_deal->all();
+
+        if(!empty($check_deal)){
+            $check_deal = reset($check_deal);
+        }
+
+        $deal_check_add = false;
+        
+        if(!empty($check_deal) && !empty($check_deal->deal_price) &&$check_deal->active==1){
+             
+            $timeDeal_star = $check_deal->start;
+            $timeDeal_star =  \Carbon\Carbon::create($timeDeal_star);
+            $timeDeal_end = $check_deal->end;
+            $timeDeal_end =  \Carbon\Carbon::create($timeDeal_end);
+            $timestamp = $now->diffInSeconds($timeDeal_end);
+
+
+            if($now->between($check_deal->start, $check_deal->end)){
+                $deal_check_add = true;
+               
+                $price_old = $data->Price;
+                $text = '<b>MUA ONLINE GIÁ SỐC: </b>';
+                $data->Price = $check_deal->deal_price;
+                $percent = ceil((int)$price_old/$data->Price);
+            }
+        }
+        
+    }
 ?>
+
+
+
 
 <div class="body-content bg-page clearfix">
     <div class="container">
@@ -591,6 +629,9 @@ $groupProduct = DB::table('group_product')->select('name', 'link', 'id', 'produc
                 url: "{{ route('addcartfast') }}",
                 data: {
                     product_id: id,
+                    color: colors_selected[0],
+
+                    size:size_selected[0]
                        
                 },
                 success: function(result){
@@ -647,7 +688,10 @@ $groupProduct = DB::table('group_product')->select('name', 'link', 'id', 'produc
                 url: "{{ route('cart') }}",
                 data: {
                     product_id: id,
-                    gift_check:''
+                    gift_check:'',
+                    color:colors_selected[0],
+
+                    size:size_selected[0]
                        
                 },
                 beforeSend: function() {

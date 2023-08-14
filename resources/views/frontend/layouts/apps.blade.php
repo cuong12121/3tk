@@ -106,6 +106,13 @@
             {
                 display: none;
             }
+
+            #popup-footer{
+
+                top:25%;
+                left: 25%;
+            }
+
             @media only screen and (max-device-width: 767px)
             {
                 .mobile-hide
@@ -1195,7 +1202,7 @@
             <!-- popup  footer -->
 
             
-            <!-- <div id="popup-allpage" class="popup-allpage popup-allpage-active" style="display: none;">
+            <div id="popup-allpage" class="popup-allpage popup-allpage-active" style="display: block;">
                 <div class="popup-allpage-item">
                     <div class="boxbanner-8">
                     </div>
@@ -1247,7 +1254,7 @@
                     <div class="modal-content">
                     </div>
                 </div>
-            </div> -->
+            </div>
 
 
 
@@ -1371,6 +1378,8 @@
                 //     });
                 // });  
             </script>
+
+            @stack('script')
 
 
         </form>

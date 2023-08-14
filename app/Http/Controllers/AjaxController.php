@@ -610,6 +610,10 @@ class AjaxController extends Controller
 
         $gift = $request->gift_check;
 
+        $color = $request->color;
+
+        $size = $request->size;
+
         
         $data_Product = product::find($id);
 
@@ -662,7 +666,7 @@ class AjaxController extends Controller
             $price = $data_Product->Price;
         }
              
-        Cart::add(['id' => $id, 'name' => $data_Product->Name,  'qty' => 1, 'price' => $price, 'weight' => '500',  'options' => ['link' => $data_Product->Link, 'gift'=>$gift??'']]);
+        Cart::add(['id' => $id, 'name' => $data_Product->Name,  'qty' => 1, 'price' => $price, 'weight' => '500',  'options' => ['link' => $data_Product->Link, 'gift'=>$gift??'','color'=>$color, 'size'=>$size]]);
 
         $data_cart = Cart::content();
 
@@ -672,9 +676,12 @@ class AjaxController extends Controller
 
     public function addCartFast(Request $request)
     {
-         $id = $request->product_id;
+        $id = $request->product_id;
 
-        
+        $color = $request->color;
+
+        $size = $request->size;
+
         $data_Product = product::find($id);
 
         $deal   = deal::where('product_id', $id)->where('active', 1)->get()->first();
@@ -714,7 +721,7 @@ class AjaxController extends Controller
             $price = $data_Product->Price;
         }
              
-        Cart::add(['id' => $id, 'name' => $data_Product->Name,  'qty' => 1, 'price' => $price, 'weight' => '500', 'options' => ['link' => $data_Product->Link]]);
+        Cart::add(['id' => $id, 'name' => $data_Product->Name,  'qty' => 1, 'price' => $price, 'weight' => '500', 'options' => ['link' => $data_Product->Link,'color'=>$color, 'size'=>$size ]]);
 
         $data_cart = Cart::content();
 

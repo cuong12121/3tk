@@ -5,6 +5,8 @@
  <?php  
         $data_cart = Gloudemans\Shoppingcart\Facades\Cart::content();
 
+       
+
         $arrPrice = [];
         $key = 0;
         
@@ -73,14 +75,27 @@
                                         <br>
                                         <span id="ContentPlaceHolder1_grdGioHang_Labelgia_0" style="color:Red;font-size:9pt;">{{ number_format($data->price , 0, ',', '.')}}</span>
                                         <span style="color: Red; font-size: 8pt;">₫</span><br>
+
+                                        @if(!empty($data->options['size']))
+
+                                        <span>kích thước chọn: {{ $data->options['size'] }}</span>
+
+                                        @endif
+
+                                        @if(!empty($data->options['color']))
+
+                                        <span>màu sắc chọn: {{ $data->options['color'] }}</span>
+
+                                        @endif
                                         <span id="ContentPlaceHolder1_grdGioHang_lbltenmau_0" style="font-size:10pt;"></span>&nbsp;<span id="ContentPlaceHolder1_grdGioHang_lbltensize_0" style="font-size:10pt;"></span>
                                     </td>
                                     <td align="left" style="width:40px;white-space:nowrap;">
                                         <input name="sl" type="number" value="{{ $data->qty }}" id="ContentPlaceHolder1_grdGioHang_txtSoLuong_0" min="1" max="50" step="1" style="color:#313131;border-color:Silver;border-width:1px;border-style:Solid;font-size:11pt;height:25px;width:40px;">
                                     </td>
                                     <td align="left" style="width:90px;">
-                                        <span id="ContentPlaceHolder1_grdGioHang_Labeltt_0" style="color:Red;font-size:9pt;font-weight:bold;">{{ number_format($data->price , 0, ',', '.')}}</span>
+                                        <span id="ContentPlaceHolder1_grdGioHang_Labeltt_0" style="color:Red;font-size:9pt;font-weight:bold;">{{ number_format($data->price , 0, ',', '.')}}</span>  
                                         <span style="color: Red; font-size: 8pt; font-weight: bold;">₫</span>
+                                        
                                     </td>
                                     <td style="height:16px;"><input type="image" src="{{ asset('icon/capnhat2.png')  }}" onclick="javascript:__doPostBack('ctl00$ContentPlaceHolder1$grdGioHang','CapNhat$0');return false;"></td>
 

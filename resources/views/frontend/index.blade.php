@@ -242,12 +242,12 @@
             .option-sg a {
                 display: inline-block;
                 vertical-align: middle;
-                width: 218px;
+                width: 50%;
                 margin: 0 20px 0 0;
                 background: #fff;
                 border-radius: 8px;
-                height: 70px;
-/*                padding: 8px 0;*/
+               
+                padding: 10px 0;
             }
 
 
@@ -298,6 +298,10 @@
                 display: flex;
                 margin-left: 48px;
             }
+
+            .none{
+                display: none;
+            }
             
         </style>
 
@@ -307,6 +311,7 @@
 
             $now  = Carbon\Carbon::now();
             $deal = Cache::get('deals')->sortByDesc('order');
+
 
             if(!empty($deal)){
 
@@ -329,7 +334,28 @@
 
             $ar_Deal_Pd = [];
 
+            $hour =  floor($timestamp/3600);
+            $timestamp = floor($timestamp % 3600);
+            $minutes =floor($timestamp/60);
+            $timestamp = floor($timestamp % 60);
+            $seconds =floor($timestamp);
+
+           
+
         ?>
+
+      
+        <div class="none">
+             <span class="hour">{{ $hour }}</span>
+
+            <span class="minute">{{ $minutes }}</span>
+
+            <span class="second">{{ $seconds }}</span>
+
+        </div>
+           
+
+       
 
         @if(!empty($deal_check) && $deal_check->count()>0 && $now->between($deal_check[0]->start, $deal_check[0]->end) && $deal_active ===1)
 
@@ -405,7 +431,7 @@
                                         <img src="icon/muangay2.png" height="35">
                                     </div>
 
-                                    <div class="time-cd time-fl time{{ $k }}">
+                                    <div class="time-cd time-fl time1">
                                         <span class="timestamp" style="display: none;">{{   $now->diffInSeconds($value->end) }}</span> 
                                         <div class="time">
                                             <span class="hours">
@@ -785,6 +811,8 @@
     </div>
 </div>
 
+@push('script')
+
 <script>
 
      loop = {{ $deal->count() }};
@@ -794,29 +822,25 @@
                   
         time = {{ $timestamp }};
 
-        number_deal_product =10;
+       
         //in time 
       
-        // setInterval(function(){
-        //     for (var i = 0 ; i < loop; i++) {
-        //         run(i);
-        //     }
-
-        // }, 1000);
-
-
         setInterval(function(){
+            
             run(1);
+           
 
         }, 1000);
+
 
 
     
     function run(key) {
 
-        var hour =  $('.time'+key+' .hourss').text();
-        var minutes =  $('.time'+key+' .minutess').text();
-        var second =  $('.time'+key+' .secondss').text();
+        var hour =  $('.hour').text();
+
+        var minutes =  $('.minute').text();
+        var second =  $('.second').text();
 
 
         h =  parseInt(hour);
@@ -845,39 +869,40 @@
             m = 59;
         }
 
-        if (h < 0){
-            $('.time'+key).remove();
+        // if (h < 0){
+        //     $('.time'+key).remove();
 
-            priceSet =  $('.desc-deal'+key+' .price-old').text();
+        //     priceSet =  $('.desc-deal'+key+' .price-old').text();
 
-            $('.desc-deal'+key+' .price-old').css('text-decoration','none');
+        //     $('.desc-deal'+key+' .price-old').css('text-decoration','none');
 
-            $('.desc-deal'+key+' .price-new').text(priceSet);
+        //     $('.desc-deal'+key+' .price-new').text(priceSet);
 
-        }  
+        // }  
 
-        hour =  h.toString();
+        hours =  h.toString();
 
         minutes =  m.toString();
         
         seconds =  s.toString();
 
-        console.log(seconds);
 
-        //  $('.time'+key+' .hourss').text('');
+         $('.hour').text(hours);
 
-        // $('.time'+key+' .hourss').text(h<10?'0'+hour:''+hour);
+        $('.time'+key+' .hourss').text(h<10?'0'+hours:''+hours);
 
-        // $('.time'+key+' .secondss').text('');
+        $('.second').text(seconds);
 
-        // $('.time'+key+' .secondss').text(s<10?'0'+seconds:''+seconds);
+        $('.time'+key+' .secondss').text(s<10?'0'+seconds:''+seconds);
 
-        // $('.time'+key+' .minutess').text(''); 
+        $('.minute').text(minutes); 
 
-        // $('.time'+key+' .minutess').text(m<10?'0'+minutes:''+minutes);
+        $('.time'+key+' .minutess').text(m<10?'0'+minutes:''+minutes);
     }
        
 
 </script>
+
+@endpush
 
 @endsection
