@@ -27,7 +27,7 @@
 </div>
 
 <?php 
-    $check_color = DB::table('filters')->join('properties', 'filters.id', '=', 'properties.filterId')->select('properties.id','properties.name')->where('filters.group_product_id', $group_id)->where('filters.name', 'Màu sản phẩm')->get();
+    $check_color = DB::table('filters')->join('properties', 'filters.id', '=', 'properties.filterId')->select('properties.id','properties.name')->where('filters.group_product_id', $group_id)->where('filters.name', 'Màu sắc')->get();
 
     $color = [];
 
