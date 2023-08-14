@@ -283,9 +283,11 @@
                                             </div>
                                             <span id="ContentPlaceHolder1_chkmau">
 
+                                              
+
                                                 @if(!empty($color_product) && $color_product->count()>0)
                                                 @foreach($color_product as $key => $value)
-                                                <input id="ContentPlaceHolder1_chkmau_{{ $key }}" type="radio" name="ctl00$ContentPlaceHolder1$chkmau" value="Blue">
+                                                <input id="ContentPlaceHolder1_chkmau_{{ $key }}" type="radio" name="ctl00$ContentPlaceHolder1$chkmau" value="Blue" class="click-show-image" data-id="{{ @asset($value->image) }}">
                                                 <label for="ContentPlaceHolder1_chkmau_{{ $key }}">{{ @$value->name }}</label>
                                                 @endforeach
                                                 @endif
@@ -448,26 +450,42 @@
         </div>
         <div class="clearfix pt-3">
         </div>
+
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+          <span class="close">&times;</span>
+          <img class="modal-content" id="img01">
+          <div id="caption"></div>
+        </div>
     </div>
 </div>
 
 <script type="text/javascript">
 
+    var modal = document.getElementById("myModal");
+
     // click show modal
-    var img = document.getElementById("ContentPlaceHolder1_chkmau_0");
+
+    var modalImg = document.getElementById("img01");
+      
+    $('.click-show-image').click(function() {
+        modal.style.display = "block";
+        const img = $(this).attr('data-id');
+
+        modalImg.src = img;
+        captionText.innerHTML = 'ảnh sản phẩm';
+       
+    });
+
+
     
-    img.onclick = function(){
-      modal.style.display = "block";
-      modalImg.src = 'https://www.w3schools.com/howto/img_snow.jpg';
-      captionText.innerHTML = 'ảnh sản phẩm';
-    }
 
     // Get the <span> element that closes the modal
     var span = document.getElementsByClassName("close")[0];
 
     // When the user clicks on <span> (x), close the modal
     span.onclick = function() { 
-      modal.style.display = "none";
+        modal.style.display = "none";
     }
 
 
