@@ -115,7 +115,7 @@
             <div class="card-body">
 
                 <div class="row">
-                    @include('images.fields')
+                    @include('images.fields', ['group_id'=>$group_id])
                 </div>
 
             </div>
@@ -131,6 +131,7 @@
     </div>
 
     <?php 
+
         $images = App\Models\image::where('product_id', $product_id)->get();
 
         $check_color = DB::table('filters')->join('properties', 'filters.id', '=', 'properties.filterId')->select('properties.id','properties.name')->where('filters.group_product_id', $group_id)->where('filters.name', 'Màu sắc')->get()->toArray();

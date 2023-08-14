@@ -220,7 +220,16 @@
         }
         
     }
+
+
 ?>
+
+<?php 
+
+    $images_products = App\Models\image::where('product_id', $data->id)->select('image')->get();
+
+?>
+
 
 
 <style type="text/css">
@@ -251,8 +260,6 @@
     font-weight: bold;
 }
 </style>
-
-
 
 <div class="body-content bg-page clearfix">
     <div class="container">
@@ -324,17 +331,19 @@
                                                                 <a href="{{ asset($data->Image) }}">
                                                                 <img alt="{{ $data->Name }}" src="{{ asset($data->Image) }}" style="border: 1px solid #e7e7e7;"></a>
 
-                                                                <a href="../fileUpload/DYNAMICA-V64-0006-3tk.jpg">
-                                                                <img alt="Giày Bảo Hộ Lao Động Dynamica S3 " src="../fileUpload/DYNAMICA-V64-0006-3tk.jpg" style="border: 1px solid #e7e7e7;"></a>
-
-                                                                <a href="../fileUpload/DYNAMICA-V64-0015-3tk.jpg">
-                                                                <img alt="Giày Bảo Hộ Lao Động Dynamica S3 " src="../fileUpload/DYNAMICA-V64-0015-3tk.jpg" style="border: 1px solid #e7e7e7;"></a>
+                                                              
+                                                                @if(isset($images_products))
 
 
-                                                                <a href="../fileUpload/DYNAMICA-V64-0006-3tk.jpg">
-                                                                <img alt="Giày Bảo Hộ Lao Động Dynamica S3 " src="../fileUpload/DYNAMICA-V64-0006-3tk.jpg" style="border: 1px solid #e7e7e7;"></a> 
+                                                                @foreach( $images_products as $image)
+                                                            
+                                                                <a href="{{ asset($image->image) }}">
+                                                                <img alt="Giày Bảo Hộ Lao Động Dynamica S3 " src="{{ asset($image->image) }}" style="border: 1px solid #e7e7e7;"></a>
 
+                                                            
+                                                                @endforeach
 
+                                                                @endif
 
                                                             </div>
                                                         </div>

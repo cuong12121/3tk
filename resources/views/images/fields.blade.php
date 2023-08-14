@@ -45,6 +45,6 @@
 <div class="form-group col-sm-6">
     {!! Form::label('Color', 'Màu sắc sản phẩm:') !!}
 
-    {!! Form::select('color_id', $color, '', ['class' => 'form-control']) !!}
+    {!! Form::select('color_id', $color, @$images->color_id, ['class' => 'form-control']) !!}
 </div>
 
