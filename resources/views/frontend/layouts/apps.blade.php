@@ -104,8 +104,12 @@
                 border: 0px !important;
             }
 
-            .opacity-background{
-                background-color: rgba(0, 0 , 0, 0.5);
+             @media only screen and (min-width: 768px) {
+
+                .opacity-background{
+                    background-color: rgba(0, 0 , 0, 0.5);
+                }
+
             }
 
             .popup-allpage .popup-allpage-item a.popup-allpage-close{
