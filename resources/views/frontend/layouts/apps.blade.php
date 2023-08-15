@@ -1248,7 +1248,7 @@
 
         @if($popup->option ==1)
 
-            
+            @if(!empty($requestcheck)&& \Request::route()->getName() =="homeFe")
             <div id="popup-allpage" class="popup-allpage popup-allpage-active" style="display: block;">
                 <div class="popup-allpage-item">
                     <div class="boxbanner-8">
@@ -1260,6 +1260,7 @@
                     <a class="popup-allpage-close" href="javascript:;" title="Đóng lại">X</a>
                 </div>
             </div>
+            @endif
                 
         @endif
 
