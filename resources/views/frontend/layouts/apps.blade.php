@@ -56,13 +56,10 @@
         <script ecom-append-v="true" src="{{ asset('images/angular.min.js')}}"></script>
         <script ecom-append-v="true" src="{{ asset('images/masoffer-base.js')}}"></script>
         <link ecom-append-v="true" rel="stylesheet" href="{{ asset('images/site.min.css')}}">
-        <meta name="google-site-verification" content="sSaR68TJgGThigJCh2fU_wfFE-CZSCWN584lD5mfNes">
+       
         <script src="{{ asset('images/tracking.min.js')}}"></script>
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        <script type="text/javascript">
-            AT.init({ "campaign_id": 2578, "is_reoccur": 1, "is_lastclick": 1, "cookie_duration": 30 })
-            AT.track();
-        </script>
+    
         <script type="text/javascript" async="" src="{{ asset('images/f.txt')}}"></script>
         <link rel="stylesheet" type="text/css" href="{{ asset('images/info.min.css')}}" classname="ins-frameless-css" class="ins-frameless-css">
         <!-- <script type="text/javascript" src="{{ asset('images/info.js')}}"></script> -->
@@ -1308,9 +1305,7 @@
             <script src="images/owl.carousel.min.js"></script>
             <script ecom-append-v="true" src="images/add-to-cart.js"></script>
             <script ecom-append-v="true" src="images/site.min.js"></script>
-            <script type="text/javascript" async="" classname="ins-camp-frameless-js ins-camp-frameless-js-3605" class="ins-camp-frameless-js ins-camp-frameless-js-3605">try {(function(camp){var construct=function(){checkCouponPage();isRightToLeftLanguage();checkCopyButton();};var checkCouponPage=function(){if('none'==='block'){sQuery('.thank-you-text-container').remove();setEvents();}else{sQuery('.thank-you-coupon-container').remove();}};var rightToLeftLangList=['ar_AE','ar_AR','ar_EG','ar_ME','ar_SA','fa_FA','ur_UR'];var isRightToLeftLanguage=function(){if(rightToLeftLangList.indexOf(spApi.getLang())>-1){sQuery('#ins-lead-collection-popup-with-image-adaptive').addClass('ins-arabic');}};var checkCopyButton=function(){if(typeof InsClipboard==='undefined'){spApi.loadScript(spApi.staticUrl+'js/clipboard.min.js',setCopyButton);}else{setCopyButton();}};var setCopyButton=function(){if(!sQuery('.ins-element-copy-to-clipboard-button').hasClass('ins-show-assistant')){sQuery(document).trigger('setCopyButton'+camp.id,'.ins-element-copy-to-clipboard-button');}};var getCouponCode=function(){var couponCode=isCouponExists()?spApi.storageData('sp-info-c-'+camp.id):'';if(couponCode){var couponCont=sQuery('.ins-copy-to-clipboard');couponCont.html(couponCont.html().replace('@COUPONCODE',couponCode));sQuery('.ins-element-copy-to-clipboard-button').attr('data-clipboard-text',couponCode);}};var isValidationCorrect=function(self){var validation=false;var emailValue=self.closest('form').find('input[type=email]').val();var isCheckboxChecked=self.closest('form').find('input[type=checkbox]:not(:checked)').length<1;if(emailValue!==''&&spApi.validateEmail(emailValue)&&isCheckboxChecked){validation=true;}
-                return validation;};var setEvents=function(){sQuery('.ins-form-submit-button').unbind('click.insGetCoupon').on('click.insGetCoupon',function(){if(isValidationCorrect(sQuery(this))){if(!isCouponExists()){sQuery(document).trigger('getCoupon'+camp.id,getCouponCode);}else{getCouponCode();}}});sQuery('.ins-element-copy-to-clipboard-button').unbind('click.insCouponCopyToClipboard').on('click.insCouponCopyToClipboard',function(){if(camp.id!==0){sQuery('.ins-editable',this).text('Copied');sQuery(this).closest('.ins-coupon-button').attr('style','background-color: #515252 !important;');}});};var isCouponExists=function(){return spApi.storageData('sp-info-c-'+camp.id)!==null;};construct();sQuery(document).on('framelessInited'+camp.id,function(){construct();});(function(self){self.sendDataToContactList=function(userInfo){var payload={partner:partnerName,source:'email',users:[{identifiers:{em:userInfo.email},attributes:userInfo.attributes,append:true,immediate:true}],};Insider.request.post({url:'https://unification.useinsider.com/api/attribute/v2/update',data:JSON.stringify(payload),dataType:'json'});};(Insider.__external.ajaxListener||Insider.fns.noop)(function(url){if(url.indexOf('/save-questionnaire/mediamartvn')>-1){var contactListId=10;var userInfo={email:Insider.dom('#ins-dynamic-input-1545222171109').val(),attributes:{lid:[contactListId],eo:true,gdpr:true}};self.sendDataToContactList(userInfo);}});})({});})({"id":3605,"predictiveFeedSettings":"","locationConfig":{"type":0,"mode":"adaptive","position":"fixed","left":"439","top":"26.80000114440918","windowHeight":"674","windowWidth":"1536","windowHref":"https://mediamart.vn/","selectedElement":"","frameless":true,"gridIsActive":true,"gridConfig":{"gridIsActive":"true","mode":"adaptive","xDirection":"center","yDirection":"middle"}},"currencyFormatRules":{"USD":{"name":"US Dollar","symbol":"USD","alignment":"1","thousandSeparator":".","decimalSeparator":",","decimalCount":0,"value":"USD"},"VND":{"name":"Vietnamese Dong","symbol":"đ","alignment":"1","thousandSeparator":".","decimalSeparator":",","decimalCount":0,"value":"VND"}},"smsConfig":{"virtualLongNumber":""}});}catch(err){Insider.errorBag.add(err);}
-            </script>
+         
 
             <div style="position: fixed; bottom: 60px; right: 5px; z-index: 9999;">
                 <div style="margin-top:-5px;">
@@ -1323,13 +1318,7 @@
                 </div>
             </div>
 
-            <script type="text/javascript">
-                //<![CDATA[
-                (function() {var fn = function() {$get("header_ScriptManager1_HiddenField").value = '';Sys.Application.remove_init(fn);};Sys.Application.add_init(fn);})();Sys.Application.add_init(function() {
-                    $create(Sys.Extended.UI.AutoCompleteBehavior, {"completionListCssClass":"autocomplete_completionListElement","completionListItemCssClass":"autocomplete_listItem","completionSetCount":20,"delimiterCharacters":"","highlightedItemCssClass":"autocomplete_highlightedListItem","id":"AutoCompleteEx","minimumPrefixLength":1,"onHide":"{\"AnimationName\":\"Parallel\",\"Duration\":\".4\",\"AnimationChildren\":[{\"AnimationName\":\"FadeOut\",\"AnimationChildren\":[]},{\"AnimationName\":\"Length\",\"PropertyKey\":\"height\",\"StartValueScript\":\"$find(\\u0027AutoCompleteEx\\u0027)._height\",\"EndValue\":\"0\",\"AnimationChildren\":[]}]}","onShow":"{\"AnimationName\":\"Sequence\",\"AnimationChildren\":[{\"AnimationName\":\"OpacityAction\",\"Opacity\":\"0\",\"AnimationChildren\":[]},{\"AnimationName\":\"HideAction\",\"Visible\":\"true\",\"AnimationChildren\":[]},{\"AnimationName\":\"ScriptAction\",\"Script\":\"\\r\\n                                // Cache the size and setup the initial size\\r\\n                                var behavior = $find(\\u0027AutoCompleteEx\\u0027);\\r\\n                                if (!behavior._height) {\\r\\n                                    var target = behavior.get_completionList();\\r\\n                                    behavior._height = target.offsetHeight - 2;\\r\\n                                    target.style.height = \\u00270px\\u0027;\\r\\n                                }\",\"AnimationChildren\":[]},{\"AnimationName\":\"Parallel\",\"Duration\":\".4\",\"AnimationChildren\":[{\"AnimationName\":\"FadeIn\",\"AnimationChildren\":[]},{\"AnimationName\":\"Length\",\"PropertyKey\":\"height\",\"StartValue\":\"0\",\"EndValueScript\":\"$find(\\u0027AutoCompleteEx\\u0027)._height\",\"AnimationChildren\":[]}]}]}","serviceMethod":"GetCompletionList","servicePath":"AutoComplete.asmx","showOnlyCurrentWordInCompletionListItem":true}, null, null, $get("header_txttieude"));
-                });
-                //]]>
-            </script>
+           
 
             <script type="text/javascript">
 

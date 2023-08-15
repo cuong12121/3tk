@@ -167,7 +167,6 @@
 <?php
 
     $groupProduct = DB::table('group_product')->select('name', 'link', 'id', 'product_id')->get();
-    
 
     foreach($groupProduct as $groupProducts ){
 
@@ -376,7 +375,7 @@
                                                 </div>
 
                                                 @if(!empty($text))
-                                                <div class="crazy-deal-details pc" style="background-image:url('https://dienmaynguoiviet.vn/images/template/flashsale.png'); height:38px"> <div class="crazy-deal-details-right"> <time class="crazy-deal-details-countdown" data-spm-anchor-id="a2o4n.pdp_revamp.0.i0.89db8552daSXV6">Kết thúc sau <span class="crazy-deal-details-countdown-time clock">31:19:10</span></time>  </div> </div>
+                                                <div class="crazy-deal-details pc" style="background-image:url('{{ asset('images-details/flashsale.png')}}'); height:38px"> <div class="crazy-deal-details-right"> <time class="crazy-deal-details-countdown" data-spm-anchor-id="a2o4n.pdp_revamp.0.i0.89db8552daSXV6">Kết thúc sau <span class="crazy-deal-details-countdown-time clock">31:19:10</span></time>  </div> </div>
 
                                                 @endif
                                             </div>
