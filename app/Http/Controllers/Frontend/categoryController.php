@@ -746,6 +746,43 @@ class categoryController extends Controller
         }
 
         return $result;
+    }
+
+
+    public function showTradeMark($name, $data_cate, $data)
+    {
+        $check_trade_mark = DB::table('properties')->join('filters', 'properties.filterId', '=', 'filters.id')->select('properties.name', 'properties.id', 'filters.value')->where('filters.group_product_id', $data_cate)->where('filters.name', $name)->get();
+
+        $trade_mark_show = '';
+
+        if(!empty(json_decode($check_trade_mark, true)[0]) ){
+
+            $trade_marks = [];
+
+            $check_trade_mark = json_decode($check_trade_mark, true);
+
+            $trade_mark = json_decode($check_trade_mark[0]['value'], true);
+
+
+
+            if(count($trade_mark)>0){
+
+                foreach ($trade_mark as  $value) {
+                    
+                    array_push($trade_marks, $value[0]);
+                }
+            }
+
+            if(array_search($data->id, $trade_marks)>-1){
+
+                $trade_mark_show = $check_trade_mark[0]['name'];
+            
+            }
+           
+        }
+
+        return $trade_mark_show;
+
     }    
 
     public function details($slug)
@@ -883,11 +920,14 @@ class categoryController extends Controller
 
             $check_show_size =   DB::table('properties')->join('filters', 'properties.filterId', '=', 'filters.id')->select('properties.name', 'properties.id', 'filters.value')->where('filters.group_product_id', $data_cate)->where('filters.name', 'size')->get();
 
-           
+
+
+            $trade_mark_show = $this->showTradeMark('Thương hiệu', $data_cate, $data);
+
+            $field  = $this->showTradeMark('Lĩnh vực', $data_cate, $data);
+
+        
             $size_pd = [];
-
-
-           
 
             if(!empty($check_show_size) &&  $check_show_size->count()>0){
 
@@ -909,7 +949,7 @@ class categoryController extends Controller
 
             // dd(json_decode($check_show_size[1]->value, true));
 
-            return view('frontend.details', compact('data', 'images', 'other_product', 'meta', 'pageCheck', 'data_cate', 'color_product', 'size_pd'));
+            return view('frontend.details', compact('data', 'images', 'other_product', 'meta', 'pageCheck', 'data_cate', 'color_product', 'size_pd', 'trade_mark_show', 'field'));
         }
     }
 

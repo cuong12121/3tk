@@ -406,19 +406,34 @@
 
                                             </span>
 
+                                            @if(!empty($trade_mark_show))
+
                                             <div style="padding-top: 6px;" itemprop="brand" itemscope="" itemtype="http://schema.org/Brand">
-                                                <span>Thương hiệu: </span><a href="../safety-Jogger--bi-165.html" itemprop="url"><span itemprop="name">
-                                                Safety Jogger - Bỉ
+                                                <span>Thương hiệu: </span><a href="#" itemprop="url"><span itemprop="name">
+                                                {{ $trade_mark_show }}
                                                 </span></a>
                                             </div>
+
+                                            @endif
+
+                                            @if(!empty($field))
                                             <div style="padding-top: 6px;" itemprop="brand" itemscope="" itemtype="http://schema.org/Brand">
                                                 <span>Lĩnh vực: </span><a href="../san-xuat-cong-nghiep-136.html" itemprop="url"><span itemprop="name">
-                                                Sản xuất công nghiệp
+                                                {{ $field  }}
                                                 </span></a>
                                             </div>
+
+                                            @endif
                                             <div style="padding-top: 6px;" class="stock">
                                                 <span>Tình trạng:</span> <i class="fa fa-check"></i>
-                                                Còn hàng
+
+
+                                                @if($data->Quantily>0)
+                                                    Còn hàng
+                                                @else
+                                                    Hết hàng   
+                                                @endif    
+
                                             </div>
                                             <div style="padding-top: 10px;">
                                                 <div class="pdetail-promotion">
