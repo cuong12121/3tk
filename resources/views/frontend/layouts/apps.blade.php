@@ -599,7 +599,7 @@
                                                 <li class="nav-item dropdown">
                                                     <span class="nav-link dropdown-toggle" data-toggle="dropdown" href="dai-an-toan-51.html">
                                                     <img loading="lazy" src="Images/upload/HAR35.jpg" height="20" style="padding-top:8px;" alt="Đai An Toàn">
-                                                    <span class="nav-link-text"><a href='dai-an-toan-51.html' target='_blank'>
+                                                    <span class="nav-link-text"><a href='/dai-an-toan' target='_blank'>
                                                     Đai An Toàn</a> </span></span>
                                                     <ul class="dropdown-menu dropdown-menu-1">
                                                         <!-- <li class="v-menu-item nav-item-1 dropdown-submenu">
@@ -678,7 +678,7 @@
                                                 <li class="nav-item dropdown">
                                                     <span class="nav-link dropdown-toggle" data-toggle="dropdown" href="gang-tay-bao-ho-lao-dong">
                                                     <img loading="lazy" src="Images/upload/-ve702pg.jpg" height="20" style="padding-top:8px;" alt="Găng Tay Bảo Hộ Lao Động">
-                                                    <span class="nav-link-text"><a href='gang-tay-bao-ho-lao-dong' target='_blank'>
+                                                    <span class="nav-link-text"><a href='{{  route("details", "gang-tay-bao-ho-lao-dong")}}   ' target='_blank'>
                                                     Găng Tay Bảo Hộ Lao Động</a> </span></span>
                                                     <ul class="dropdown-menu dropdown-menu-1">
                                                       <!--   <li class="v-menu-item nav-item-1 dropdown-submenu">
@@ -771,7 +771,7 @@
                                                     </ul>
                                                 </li>
                                                 <li class="nav-item dropdown">
-                                                    <span class="nav-link dropdown-toggle" data-toggle="dropdown" href="quan-ao-bao-ho">
+                                                    <span class="nav-link dropdown-toggle" data-toggle="dropdown" href="{{ route('details', 'quan-ao-bao-ho') }}  ">
                                                     <img loading="lazy" src="Images/upload/AlphaTec_4000_212%20-%20no%20hood_Green_Product_Front.png" height="20" style="padding-top:8px;" alt="Quần Áo Bảo Hộ">
                                                     <span class="nav-link-text"><a href='quan-ao-bao-ho' target='_blank'>
                                                     Quần Áo Bảo Hộ</a> </span></span>
@@ -842,9 +842,9 @@
                                                     </ul>
                                                 </li>
                                                 <li class="nav-item dropdown">
-                                                    <span class="nav-link dropdown-toggle" data-toggle="dropdown" href="giay-bao-ho-lao-dong">
+                                                    <span class="nav-link dropdown-toggle" data-toggle="dropdown" href="{{ route('details', 'giay-bao-ho-lao-dong') }}  ">
                                                     <img loading="lazy" src="Images/upload/JET3-S3-600x600.jpg" height="20" style="padding-top:8px;" alt="Giày Bảo Hộ Lao Động">
-                                                    <span class="nav-link-text"><a href='giay-bao-ho-lao-dong' target='_blank'>
+                                                    <span class="nav-link-text"><a href="{{ route('details', 'giay-bao-ho-lao-dong') }}" target='_blank'>
                                                     Giày Bảo Hộ Lao Động</a> </span></span>
                                                     <ul class="dropdown-menu dropdown-menu-1">
                                                         <!-- <li class="v-menu-item nav-item-1 dropdown-submenu">
@@ -909,9 +909,9 @@
                                                     </ul>
                                                 </li>
                                                 <li class="nav-item dropdown">
-                                                    <span class="nav-link dropdown-toggle" data-toggle="dropdown" href="tat-bao-ho">
+                                                    <span class="nav-link dropdown-toggle" data-toggle="dropdown" href="{{ route('details', 'tat-bao-ho') }}">
                                                     <img loading="lazy" src="Images/upload/3TK-SJSOCK-001.jpg" height="20" style="padding-top:8px;" alt="Tất Bảo Hộ">
-                                                    <span class="nav-link-text"><a href='tat-bao-ho' target='_blank'>
+                                                    <span class="nav-link-text"><a href="{{ route('details', 'tat-bao-ho') }}" target='_blank'>
                                                     Tất Bảo Hộ</a> </span></span>
                                                     <ul class="dropdown-menu dropdown-menu-1">
                                                        <!--  <li class="v-menu-item nav-item-1 dropdown-submenu">
@@ -944,9 +944,9 @@
                                                     </ul>
                                                 </li>
                                                 <li class="nav-item dropdown">
-                                                    <span class="nav-link dropdown-toggle" data-toggle="dropdown" href="ung-bao-ho">
+                                                    <span class="nav-link dropdown-toggle" data-toggle="dropdown" href="{{ route('details', 'ung-bao-ho') }} ">
                                                     <img loading="lazy" src="Images/upload/jogger-gloves-g6.jpg" height="20" style="padding-top:8px;" alt="Ủng Bảo Hộ">
-                                                    <span class="nav-link-text"><a href='ung-bao-ho-381.html' target='_blank'>
+                                                    <span class="nav-link-text"><a href="{{ route('details', 'ung-bao-ho') }} " target='_blank'>
                                                     Ủng Bảo Hộ</a> </span></span>
                                                     <ul class="dropdown-menu dropdown-menu-1">
                                                         <!-- <li class="v-menu-item nav-item-1 dropdown-submenu">
@@ -987,9 +987,9 @@
                                                     </ul>
                                                 </li>
                                                 <li class="nav-item dropdown">
-                                                    <span class="nav-link dropdown-toggle" data-toggle="dropdown" href="phong-chay-chua-chay">
+                                                    <span class="nav-link dropdown-toggle" data-toggle="dropdown" href="{{ route('details', 'phong-chay-chua-chay') }}">
                                                     <img loading="lazy" src="Images/upload/binh-cuu-hoa.jpg" height="20" style="padding-top:8px;" alt="Phòng cháy, chữa cháy">
-                                                    <span class="nav-link-text"><a href='phong-chay-chua-chay-151.html' target='_blank'>
+                                                    <span class="nav-link-text"><a href="{{ route('details', 'phong-chay-chua-chay') }}" target='_blank'>
                                                     Phòng cháy, chữa cháy</a> </span></span>
                                                     <ul class="dropdown-menu dropdown-menu-1">
                                                         <!-- <li class="v-menu-item nav-item-1 dropdown-submenu">
@@ -1010,9 +1010,9 @@
                                                     </ul>
                                                 </li>
                                                 <li class="nav-item dropdown">
-                                                    <span class="nav-link dropdown-toggle" data-toggle="dropdown" href="thiet-bi-may-moc-khac">
+                                                    <span class="nav-link dropdown-toggle" data-toggle="dropdown" href="{{ route('details', ' thiet-bi-may-moc-khac') }}">
                                                     <img loading="lazy" src="Images/upload/may-do-khi-MSA-300x300.jpg" height="20" style="padding-top:8px;" alt="Thiết bị máy móc khác">
-                                                    <span class="nav-link-text"><a href='thiet-bi-may-moc-khac' target='_blank'>
+                                                    <span class="nav-link-text"><a href="{{ route('details', ' thiet-bi-may-moc-khac') }}" target='_blank'>
                                                     Thiết bị máy móc khác</a> </span></span>
                                                     <ul class="dropdown-menu dropdown-menu-1">
                                                         <!-- <li class="v-menu-item nav-item-1 dropdown-submenu">
