@@ -158,6 +158,19 @@
             $number_cart = count($cart);
            
          ?>   
+
+          <?php  
+            $requestcheck = \Request::route();
+
+            if(!empty($requestcheck)){
+                 $nameRoute = \Request::route()->getName();
+            }
+            else{
+                 $nameRoute = '';
+            }
+           
+
+          ?>
     
     
     </head>
