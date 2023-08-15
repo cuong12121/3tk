@@ -5,8 +5,6 @@
  <?php  
         $data_cart = Gloudemans\Shoppingcart\Facades\Cart::content();
 
-       
-
         $arrPrice = [];
         $key = 0;
         
@@ -55,10 +53,14 @@
 
                                 @if(!empty($data_cart) && count($data_cart)>0 )
 
-                                @foreach($data_cart as $data)
-
                                 <?php 
 
+                                    $z = 0;
+                                ?>
+
+                                @foreach($data_cart as $key => $data)
+                                <?php 
+                                    $z++;
                                     $price = (int)$data->price*(int)$data->qty;
                                     $key++;
                                     array_push($arrPrice, $price);
@@ -73,7 +75,7 @@
                                     <td align="left">
                                         <b>{{ $data->name }}</b>
                                         <br>
-                                        <span id="ContentPlaceHolder1_grdGioHang_Labelgia_0" style="color:Red;font-size:9pt;">{{ number_format($data->price , 0, ',', '.')}}</span>
+                                        <span id="ContentPlaceHolder1_grdGioHang_Labelgia_{{ $z }}" style="color:Red;font-size:9pt;">{{ number_format($data->price , 0, ',', '.')}}</span>
                                         <span style="color: Red; font-size: 8pt;">₫</span><br>
 
                                         @if(!empty($data->options['size']))
@@ -87,18 +89,18 @@
                                         <span>màu sắc chọn: {{ $data->options['color'] }}</span>
 
                                         @endif
-                                        <span id="ContentPlaceHolder1_grdGioHang_lbltenmau_0" style="font-size:10pt;"></span>&nbsp;<span id="ContentPlaceHolder1_grdGioHang_lbltensize_0" style="font-size:10pt;"></span>
+                                        <span id="ContentPlaceHolder1_grdGioHang_lbltenmau_{{ $z }}" style="font-size:10pt;"></span>&nbsp;<span id="ContentPlaceHolder1_grdGioHang_lbltensize_{{ $z }}" style="font-size:10pt;"></span>
                                     </td>
                                     <td align="left" style="width:40px;white-space:nowrap;">
-                                        <input name="sl" type="number" value="{{ $data->qty }}" id="ContentPlaceHolder1_grdGioHang_txtSoLuong_0" min="1" max="50" step="1" style="color:#313131;border-color:Silver;border-width:1px;border-style:Solid;font-size:11pt;height:25px;width:40px;">
+                                        <input name="sl" type="number" value="{{ $data->qty }}" id="soluong_{{ $z }}" min="1" max="50" step="1" style="color:#313131;border-color:Silver;border-width:1px;border-style:Solid;font-size:11pt;height:25px;width:40px;">
                                     </td>
                                     <td align="left" style="width:90px;">
-                                        <span id="ContentPlaceHolder1_grdGioHang_Labeltt_0" style="color:Red;font-size:9pt;font-weight:bold;">{{ number_format($data->price , 0, ',', '.')}}</span>  
+                                        <span id="price_val_{{ $key }}" style="color:Red;font-size:9pt;font-weight:bold;">{{ number_format($data->price , 0, ',', '.')}}</span>  
                                         <span style="color: Red; font-size: 8pt; font-weight: bold;">₫</span>
                                         
                                     </td>
                                     <td style="height:16px;">
-                                        <button type="submit">
+                                        <button type="submit" data-id="{{ $z }}"  onclick="updateDataCart('soluong_{{ $z }}', '{{ $data->rowId }}')">
                                             <img src="{{ asset('icon/capnhat2.png')  }}">
                                         </button>
                                        
@@ -133,13 +135,13 @@
                                 </div>
                                 <div class="col-md-6" style="padding:5px;">
                                     <div style="padding: 5px 10px; text-align: right;">
-                                        Tạm tính: <span id="ContentPlaceHolder1_lblTongTien"><font face="Arial" color="Red" size="3"></font></span><span style="color: Red; font-weight: bold;">{{ number_format($totalPrice , 0, ',', '.')}} ₫</span>
+                                        Tạm tính: <span><font face="Arial" color="Red" size="3"></font></span><span style="color: Red; font-weight: bold;">{{ number_format($totalPrice , 0, ',', '.')}} ₫</span>
                                     </div>
                                     <div style="padding: 5px 10px; text-align: right;">
                                         Phí vận chuyển: <span id="ContentPlaceHolder1_lblphivanchuyen"><font face="Arial" color="Red" size="2"></font></span><span style="color: Red; font-weight: bold;">0₫</span>
                                     </div>
                                     <div style="padding: 8px 10px; text-align: right; border-top:1px solid #e7e7e7; font-size:13pt;">
-                                        Tổng cộng: <span id="ContentPlaceHolder1_lblTongTien1"><b><font face="Arial" color="Red"></font></b></span><span style="color: Red; font-weight: bold;">{{ number_format($totalPrice , 0, ',', '.')}}₫</span>
+                                        Tổng cộng: <span><b><font face="Arial" color="Red"></font></b></span><span style="color: Red; font-weight: bold;">{{ number_format($totalPrice , 0, ',', '.')}}₫</span>
                                     </div>
                                 </div>
                             </div>
@@ -208,7 +210,7 @@
                                         </div>
                                         <div style="padding:5px;">
                                             
-                                                <option value=" Thanh toán khi giao hàng (COD)"> Thanh to&#225;n khi giao h&#224;ng (COD)</option>
+                                                <option value="Thanh toán khi giao hàng (COD)"> Thanh to&#225;n khi giao h&#224;ng (COD)</option>
                                                
                                         </div>
                                     </div>
@@ -259,6 +261,40 @@
 </div>
 
 <script type="text/javascript">
+
+    function updateDataCart(key, dataId) {
+
+
+        const val_number = $('#'+key).val();
+        val_numbers =  parseInt(val_number);
+
+
+
+        if(val_numbers>=0){
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $.ajax({
+                type: 'POST',
+                url: "{{ route('addCartNumber') }}",
+                data: {
+                    rowId: dataId,
+                    number:val_numbers
+                },
+                success: function(result){
+
+                    window.location.reload();
+                }
+            });
+
+           
+        }
+
+    }
+
     function removeProductCart(id) {
         $.ajaxSetup({
             headers: {
@@ -276,12 +312,9 @@
             success: function(result){
               
                 window.location.reload();
-
-              
                 
             }
         });
-
 
     }
 </script>

@@ -597,9 +597,9 @@
                                                     </ul>
                                                 </li>
                                                 <li class="nav-item dropdown">
-                                                    <span class="nav-link dropdown-toggle" data-toggle="dropdown" href="dai-an-toan-51.html">
+                                                    <span class="nav-link dropdown-toggle" data-toggle="dropdown" href="{{ route('details', 'dai-an-toan') }} ">
                                                     <img loading="lazy" src="Images/upload/HAR35.jpg" height="20" style="padding-top:8px;" alt="Đai An Toàn">
-                                                    <span class="nav-link-text"><a href='/dai-an-toan' target='_blank'>
+                                                    <span class="nav-link-text"><a href="{{ route('details', 'dai-an-toan') }}" target='_blank'>
                                                     Đai An Toàn</a> </span></span>
                                                     <ul class="dropdown-menu dropdown-menu-1">
                                                         <!-- <li class="v-menu-item nav-item-1 dropdown-submenu">
