@@ -33,6 +33,14 @@
         transform: rotate(360deg);
       }
     }
+
+    @media (max-width: 768px){
+
+        #getproducts{
+            display: none;
+        }
+    }    
+
 </style>
 
 <div class="body-content bg-page clearfix">
@@ -123,7 +131,7 @@
 
                   
                     @if(!empty($filter) && $filter->count()>0)
-                    <div class="col-2 col-md-2">
+                    <div class="col-md-2 col-12">
 
                         <aside id="yith-woocommerce-ajax-navigation-filters-3" class="widget widget_yith-woocommerce-ajax-navigation-filters">
                             <div class="yith-wcan-filters no-title enhanced" id="preset_768" data-preset-id="768" data-target="">
@@ -185,7 +193,7 @@
 
 
 
-                    <div id="getproducts" class="col-{{ !empty($filter)&& $filter->count()>0?10:12  }} col-md-{{ !empty($filter)?10:12  }}">
+                    <div id="getproducts" class="col-md-{{ !empty($filter)?10:12  }} col-12">
                         <div class="row product-list product-list-bycate">
 
 

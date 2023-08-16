@@ -33,7 +33,13 @@
 
             height: auto !important;
 
-        }         
+        }   
+
+        .time {
+           
+            margin-left: 0 !important; 
+        }
+
         /* height: 308px; */
     }
 

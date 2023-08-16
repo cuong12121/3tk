@@ -55,7 +55,7 @@
 
         <script ecom-append-v="true" src="{{ asset('images/angular.min.js')}}"></script>
         <script ecom-append-v="true" src="{{ asset('images/masoffer-base.js')}}"></script>
-        <link ecom-append-v="true" rel="stylesheet" href="{{ asset('images/site.min.css')}}">
+        <link ecom-append-v="true" rel="stylesheet" href="{{ asset('images/site.min.css')}}?ver=2">
        
         <script src="{{ asset('images/tracking.min.js')}}"></script>
         <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -1081,7 +1081,7 @@
                                             Chứng nhận</span> <span class="menu-item-view menu-item-view-779" style="display: none;">
                                             </span></a>
                                         </li>
-                                        <li class="v-menu-item"><a data-id="779" href="dich-vu-83.html" title="Dịch vụ"><span>
+                                        <li class="v-menu-item"><a data-id="779" href="{{ route('details', 'dich-vu') }}" title="Dịch vụ"><span>
                                             Dịch vụ</span> <span class="menu-item-view menu-item-view-779" style="display: none;">
                                             </span></a>
                                         </li>
