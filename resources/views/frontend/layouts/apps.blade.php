@@ -6,7 +6,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>
-            Phân phối thiết bị Bảo Hộ Lao Động
+            {{ $meta->meta_title??'Phân phối thiết bị Bảo Hộ Lao Động' }}   
         </title>
         <link rel="SHORTCUT ICON" href="images/ico.png">
         <meta name="description" content="Chuyên phân phối, bán buôn bán lẻ các loại thiết bị bảo hộ lao động cao cấp dành cho các khu công nghiệp, công nhân nhà xưởng, công ty sản xuất">
