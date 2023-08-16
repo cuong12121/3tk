@@ -1089,7 +1089,7 @@
                                             Tin tức</span> <span class="menu-item-view menu-item-view-779" style="display: none;">
                                             </span></a>
                                         </li>
-                                        <li class="v-menu-item"><a data-id="779" href="ho-tro-khach-hang-63.html" title="Hỗ trợ khách hàng"><span>
+                                        <li class="v-menu-item"><a data-id="779" href="{{ route('details', 'ho-tro-khach-hang') }}" title="Hỗ trợ khách hàng"><span>
                                             Hỗ trợ khách hàng</span> <span class="menu-item-view menu-item-view-779" style="display: none;">
                                             </span></a>
                                         </li>

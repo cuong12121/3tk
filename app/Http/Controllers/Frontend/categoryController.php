@@ -371,7 +371,10 @@ class categoryController extends Controller
 
 
         if(empty($findID)){
+
             return $this->blogDetailView($slug);
+
+
         }
         else{
 
@@ -622,6 +625,8 @@ class categoryController extends Controller
         $data = post::where('link', $link)->first();
 
         if(empty($data)){
+
+
             return $this->categoriesBlog($slug);
 
             die();
@@ -635,6 +640,7 @@ class categoryController extends Controller
         $related_news = post::where('category', $data->category)->where('active', 1)->select('title', 'link', 'id')->get();
 
         $name_cate = $category->namecategory;
+
 
 
         $meta = metaSeo::find($data->Meta_id);
@@ -654,7 +660,6 @@ class categoryController extends Controller
         //     $post_view->increment('views', 1);
 
         // }
-
 
         echo view('frontend.blogdetail',compact( 'name_cate', 'related_news', 'meta', 'data'));
 
@@ -678,6 +683,7 @@ class categoryController extends Controller
              $name_cates_cate = $datas->namecategory;
 
         }
+
 
         $data = post::where('category', $datas->id)->orderBy('date_post','desc')->orderBy('date_post','desc')->paginate(10);
 

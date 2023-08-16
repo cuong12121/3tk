@@ -3,6 +3,8 @@
     @extends('frontend.layouts.apps')
 
     @section('content') 
+
+    
     <div class="body-content bg-page clearfix">
                 <div class="container">
                     <div class="wrap-product">
@@ -28,7 +30,7 @@
                                     <li class="wrapbox-getProducts active" data-w="3" data-cid="17">
                                         <h3>
                                             <a href="" style="text-transform: uppercase; font-size: 13pt;">
-                                            Tin tức</a>
+                                            {{ $name_cates_cate??'Tin Tức' }}</a>
                                         </h3>
                                     </li>
                                 </ul>
