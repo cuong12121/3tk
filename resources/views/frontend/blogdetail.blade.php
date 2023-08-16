@@ -44,7 +44,7 @@
                             </h2>
                             <?php 
 
-                                $field = App\Models\group_product::where('parent_id', 13)->select('link', 'name')->get()
+                                $field = App\Models\groupProduct::where('parent_id', 13)->select('link', 'name')->get()
                             ?>
 
                             @if(!empty($field) && $field->count()>0)
