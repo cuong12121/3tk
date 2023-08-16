@@ -2,6 +2,12 @@
 
 @section('content') 
 
+<?php 
+
+    $post = Cache::rememberForever('post_home', function() {
+        return App\Models\post::where('active',1)->where('hight_light', 1)->OrderBy('created_at', 'desc')->select('link', 'title', 'image')->limit(7)->get()->toArray();
+    });
+?>
 <style type="text/css">
     
     .home-news1 .news-item-1 .img{
@@ -19,6 +25,20 @@
         font-size: 19px;
         font-weight: bold;
         font-style: italic;
+    }
+
+    @media (max-width: 768px){
+
+        .product-bestseller .product-list {
+
+            height: auto !important;
+
+        }         
+        /* height: 308px; */
+    }
+
+    .product-bestseller .product-list{
+        hei
     }
 </style>
 
@@ -690,6 +710,9 @@
         <div class="clearfix pt-3"> </div>
         <div class="clearfix pt-3">
         </div>
+
+
+        @if(isset($post) && count($post)>0)
         <div class="row" style="padding-top:30px;">
             <div class="col-md-9">
                 <h2 class="home-news-head" style=" text-transform:uppercase;">
@@ -698,86 +721,50 @@
                 <div class="home-news1">
                     <div class="item news-item news-item-1">
                         <div class="img">
-                            <a href="tin-tuc/cac-moi-nguy-hiem-co-the-xay-ra-trong-moi-truong-dien-41214.html" title="CÁC MỐI NGUY HIỂM CÓ THỂ XẢY RA TRONG MÔI TRƯỜNG ĐIỆN" data-id="15471">
+                            <a href="{{ route('details', $post[0]['link']) }}" title="{{ $post[0]['title'] }}" >
                                 <div class="mobile-hide" style="height:350px; overflow:hidden;">
-                                    <img src="images/New/HQ%205.jpg" alt="CÁC MỐI NGUY HIỂM CÓ THỂ XẢY RA TRONG MÔI TRƯỜNG ĐIỆN" width="100%">
+                                    <img src="{{ asset($post[0]['image']) }}" alt="{{ $post[0]['title'] }}" width="100%">
                                 </div>
                                 <div class="mobile-block" style="height:55px; overflow:hidden;">
-                                    <img src="images/New/HQ%205.jpg" alt="CÁC MỐI NGUY HIỂM CÓ THỂ XẢY RA TRONG MÔI TRƯỜNG ĐIỆN" width="100%">
+                                    <img src="{{ asset($post[0]['image']) }}" alt="{{ $post[0]['title'] }}" width="100%">
                                 </div>
                             </a>
                         </div>
                         <div class="name">
-                            <a href="tin-tuc/cac-moi-nguy-hiem-co-the-xay-ra-trong-moi-truong-dien-41214.html" title="CÁC MỐI NGUY HIỂM CÓ THỂ XẢY RA TRONG MÔI TRƯỜNG ĐIỆN">
-                            CÁC MỐI NGUY HIỂM CÓ THỂ XẢY RA TRONG MÔI TRƯỜNG ĐIỆN</a>
+                            <a href="{{ route('details', $post[0]['link']) }}" title="{{ $post[0]['title'] }}">
+                            {{ $post[0]['title'] }}</a>
                         </div>
                     </div>
+
+
+                    @if(count($post)>1)
+                    @for($i=1; $i<count($post); $i++)
                     <div class="item news-item news-item-2">
                         <div class="img">
-                            <a href="tin-tuc/khat-quat-chung-ve-mu-bao-ho-lao-dong-41204.html" title="KHÁT QUÁT CHUNG VỀ MŨ BẢO HỘ LAO ĐỘNG" data-id="15412">
+                            <a href="{{ route('details', $post[$i]['link']) }}" title="{{ $post[$i]['title'] }}">
                                 <div class="mobile-hide" style="height:80px; overflow:hidden;">
-                                    <img src="images/New/3tk%20%284%29.png" alt="KHÁT QUÁT CHUNG VỀ MŨ BẢO HỘ LAO ĐỘNG" width="100%">
+                                    <img src="{{ $post[$i]['title'] }}" alt="" width="100%">
                                 </div>
                                 <div class="mobile-block" style="height:55px; overflow:hidden;">
-                                    <img src="images/New/3tk%20%284%29.png" alt="KHÁT QUÁT CHUNG VỀ MŨ BẢO HỘ LAO ĐỘNG" width="100%">
+                                    <img src="{{ asset($post[0]['image']) }}" alt="{{ $post[$i]['title'] }}" width="100%">
                                 </div>
                             </a>
                         </div>
                         <div class="name">
-                            <a href="tin-tuc/khat-quat-chung-ve-mu-bao-ho-lao-dong-41204.html" title="Có nên mua laptop gaming để làm đồ họa không? Top 6 laptop gaming làm đồ họa đáng mua nhất 2022">
-                            KHÁT QUÁT CHUNG VỀ MŨ BẢO HỘ LAO ĐỘNG</a>
+                            <a href="{{ route('details', $post[$i]['link']) }}" title="{{ $post[$i]['title'] }}">
+                            {{ $post[$i]['title'] }}</a>
                         </div>
                     </div>
-                    <div class="item news-item news-item-2">
-                        <div class="img">
-                            <a href="tin-tuc/top-5-doi-giay-bao-ho-cach-dien-tot-nhat-hien-nay--41194.html" title="TOP 5 ĐÔI GIÀY BẢO HỘ CÁCH ĐIỆN TỐT NHẤT HIỆN NAY " data-id="15412">
-                                <div class="mobile-hide" style="height:80px; overflow:hidden;">
-                                    <img src="images/New/3tk%20%282%29.png" alt="TOP 5 ĐÔI GIÀY BẢO HỘ CÁCH ĐIỆN TỐT NHẤT HIỆN NAY " width="100%">
-                                </div>
-                                <div class="mobile-block" style="height:55px; overflow:hidden;">
-                                    <img src="images/New/3tk%20%282%29.png" alt="TOP 5 ĐÔI GIÀY BẢO HỘ CÁCH ĐIỆN TỐT NHẤT HIỆN NAY " width="100%">
-                                </div>
-                            </a>
-                        </div>
-                        <div class="name">
-                            <a href="tin-tuc/top-5-doi-giay-bao-ho-cach-dien-tot-nhat-hien-nay--41194.html" title="Có nên mua laptop gaming để làm đồ họa không? Top 6 laptop gaming làm đồ họa đáng mua nhất 2022">
-                            TOP 5 ĐÔI GIÀY BẢO HỘ CÁCH ĐIỆN TỐT NHẤT HIỆN NAY </a>
-                        </div>
-                    </div>
-                    <div class="item news-item news-item-2">
-                        <div class="img">
-                            <a href="tin-tuc/cau-tao-cua-thiet-bi-tro-tho-scba-t8000-model-t805-mlk-t-type-2-honeywell-41184.html" title="CẤU TẠO CỦA THIẾT BỊ TRỢ THỞ SCBA T8000 MODEL T805-MLK- T TYPE 2 HONEYWELL" data-id="15412">
-                                <div class="mobile-hide" style="height:80px; overflow:hidden;">
-                                    <img src="images/New/SCBA.jpg" alt="CẤU TẠO CỦA THIẾT BỊ TRỢ THỞ SCBA T8000 MODEL T805-MLK- T TYPE 2 HONEYWELL" width="100%">
-                                </div>
-                                <div class="mobile-block" style="height:55px; overflow:hidden;">
-                                    <img src="images/New/SCBA.jpg" alt="CẤU TẠO CỦA THIẾT BỊ TRỢ THỞ SCBA T8000 MODEL T805-MLK- T TYPE 2 HONEYWELL" width="100%">
-                                </div>
-                            </a>
-                        </div>
-                        <div class="name">
-                            <a href="tin-tuc/cau-tao-cua-thiet-bi-tro-tho-scba-t8000-model-t805-mlk-t-type-2-honeywell-41184.html" title="Có nên mua laptop gaming để làm đồ họa không? Top 6 laptop gaming làm đồ họa đáng mua nhất 2022">
-                            CẤU TẠO CỦA THIẾT BỊ TRỢ THỞ SCBA T8000 MODEL T805-MLK- T TYPE 2 HONEYWELL</a>
-                        </div>
-                    </div>
-                    <div class="item news-item news-item-2">
-                        <div class="img">
-                            <a href="tin-tuc/cac-bien-phap-an-toan-tren-cong-truong-xay-dung-41174.html" title="CÁC BIỆN PHÁP AN TOÀN TRÊN CÔNG TRƯỜNG XÂY DỰNG" data-id="15412">
-                                <div class="mobile-hide" style="height:80px; overflow:hidden;">
-                                    <img src="images/New/2604.jpg" alt="CÁC BIỆN PHÁP AN TOÀN TRÊN CÔNG TRƯỜNG XÂY DỰNG" width="100%">
-                                </div>
-                                <div class="mobile-block" style="height:55px; overflow:hidden;">
-                                    <img src="images/New/2604.jpg" alt="CÁC BIỆN PHÁP AN TOÀN TRÊN CÔNG TRƯỜNG XÂY DỰNG" width="100%">
-                                </div>
-                            </a>
-                        </div>
-                        <div class="name">
-                            <a href="tin-tuc/cac-bien-phap-an-toan-tren-cong-truong-xay-dung-41174.html" title="Có nên mua laptop gaming để làm đồ họa không? Top 6 laptop gaming làm đồ họa đáng mua nhất 2022">
-                            CÁC BIỆN PHÁP AN TOÀN TRÊN CÔNG TRƯỜNG XÂY DỰNG</a>
-                        </div>
-                    </div>
+                    @endfor
+
+                    @endif
+                   
+
+
                 </div>
             </div>
+
+
             <div class="col-md-3">
                 <h2 class="home-news-head home-news-head2">
                     VIDEO <a href="video.html">Xem thêm</a>
@@ -818,6 +805,8 @@
                 </div>
             </div>
         </div>
+
+        @endif
     </div>
 </div>
 
