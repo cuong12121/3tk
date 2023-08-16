@@ -1101,7 +1101,7 @@
                                             <span>Video</span> <span class="menu-item-view menu-item-view-779" style="display: none;">
                                             </span></a>
                                         </li>
-                                        <li class="v-menu-item"><a data-id="779" href="lien-he.html" title="Liên hệ">
+                                        <li class="v-menu-item"><a data-id="779" href="{{ route('details', 'lien-he') }}" title="Liên hệ">
                                             <span>Liên hệ</span> <span class="menu-item-view menu-item-view-779" style="display: none;">
                                             </span></a>
                                         </li>
