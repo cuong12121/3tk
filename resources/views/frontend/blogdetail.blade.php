@@ -42,16 +42,20 @@
                             <h2 class="title">
                                 BẢO HỘ NGÀNH - LĨNH VỰC
                             </h2>
+                            <?php 
+
+                                $field = App\Models\group_product::where('parent_id', 13)->select('link', 'name')->get()
+                            ?>
+
+                            @if(!empty($field) && $field->count()>0)
                             <ul class="navbar-nav">
-                                <li class="nav-item "><a href="../san-xuat-cong-nghiep-136.html">Sản xuất công nghiệp</a></li>
-                                <li class="nav-item "><a href="../bao-ve-hoa-chat-86.html">Bảo vệ hóa chất</a></li>
-                                <li class="nav-item "><a href="../vat-tu-phong-sach-76.html">Vật tư phòng sạch</a></li>
-                                <li class="nav-item "><a href="../nhiet-do-cao-96.html">Nhiệt độ cao</a></li>
-                                <li class="nav-item "><a href="../bao-ho-nganh-dien-116.html">Bảo hộ ngành điện</a></li>
-                                <li class="nav-item "><a href="../khong-gian-han-che-126.html">Không gian hạn chế</a></li>
-                                <li class="nav-item "><a href="../cuu-ho-tren-cao-146.html">Cứu hộ trên cao</a></li>
-                                <li class="nav-item "><a href="../bao-ho-nganh-y-te-156.html">Bảo hộ ngành y tế</a></li>
+                                @foreach($field as $value)
+                                <li class="nav-item "><a href="{{ route('details', $value->link) }}">{{ $value->name }}</a></li>
+                                @endforeach
+                               
+                               
                             </ul>
+                            @endif
                         </div>
                     </div>
                     <div class="col-12 col-md-9 col-lg-9">
