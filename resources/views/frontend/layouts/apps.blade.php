@@ -1073,11 +1073,11 @@
                             <div class="col-md-9 col-0">
                                 <div class="box-nav-promotion">
                                     <ul class="list-unstyled">
-                                        <li class="v-menu-item"><a data-id="779" href="gioi-thieu-13.html" title="Giới thiệu"><span>
+                                        <li class="v-menu-item"><a data-id="779" href="{{ route('details', 'gioi-thieu') }}" title="Giới thiệu"><span>
                                             Giới thiệu</span> <span class="menu-item-view menu-item-view-779" style="display: none;">
                                             </span></a>
                                         </li>
-                                        <li class="v-menu-item"><a data-id="779" href="chung-nhan-43.html" title="Chứng nhận"><span>
+                                        <li class="v-menu-item"><a data-id="779" href="{{ route('details', 'chung-nhan') }}" title="Chứng nhận"><span>
                                             Chứng nhận</span> <span class="menu-item-view menu-item-view-779" style="display: none;">
                                             </span></a>
                                         </li>
@@ -1093,7 +1093,7 @@
                                             Hỗ trợ khách hàng</span> <span class="menu-item-view menu-item-view-779" style="display: none;">
                                             </span></a>
                                         </li>
-                                        <li class="v-menu-item"><a data-id="779" href="tuyen-dung--73.html" title="Tuyển dụng "><span>
+                                        <li class="v-menu-item"><a data-id="779" href="route('details', 'tuyen-dung')" title="Tuyển dụng "><span>
                                             Tuyển dụng </span> <span class="menu-item-view menu-item-view-779" style="display: none;">
                                             </span></a>
                                         </li>
