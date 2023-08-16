@@ -1093,7 +1093,7 @@
                                             Hỗ trợ khách hàng</span> <span class="menu-item-view menu-item-view-779" style="display: none;">
                                             </span></a>
                                         </li>
-                                        <li class="v-menu-item"><a data-id="779" href="route('details', 'tuyen-dung')" title="Tuyển dụng "><span>
+                                        <li class="v-menu-item"><a data-id="779" href="{{ route('details', 'tuyen-dung') }}" title="Tuyển dụng "><span>
                                             Tuyển dụng </span> <span class="menu-item-view menu-item-view-779" style="display: none;">
                                             </span></a>
                                         </li>
