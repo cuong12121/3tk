@@ -203,6 +203,21 @@
                                             </div>
                                         </div>
                                     </div>
+
+
+                                    @if(!empty($data->options['size']))
+
+                                        <input type="hidden" name="size" value="{{ $data->options['size'] }}">
+
+                                    @endif
+
+                                     @if(!empty($data->options['color']))
+
+                                        <input type="hidden" name="color" value="{{ $data->options['color'] }}">
+
+                                    @endif
+
+                                      
                                     <div class="col-md-6" style="padding:10px 5px;">
                                        
                                         <div style="padding:5px 5px 0 5px;">
