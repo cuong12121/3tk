@@ -1097,7 +1097,7 @@
                                             Tuyển dụng </span> <span class="menu-item-view menu-item-view-779" style="display: none;">
                                             </span></a>
                                         </li>
-                                        <li class="v-menu-item"><a data-id="779" href="video.html" title="Video">
+                                        <li class="v-menu-item"><a data-id="779" href="{{ route('details', 'video') }}" title="Video">
                                             <span>Video</span> <span class="menu-item-view menu-item-view-779" style="display: none;">
                                             </span></a>
                                         </li>
