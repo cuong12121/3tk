@@ -38,6 +38,8 @@ class orderController extends Controller
             $carts[$key]['price'] = $data->price;
             $carts[$key]['name'] = $data->name;
             $carts[$key]['qty'] = $data->qty;
+            $carts[$key]['color'] = $data->color??'';
+            $carts[$key]['size'] = $data->size??'';
 
             $carts[$key]['gift'] = ($data->options)['gift']??'';
             $price = (int)$data->price*(int)$data->qty;
