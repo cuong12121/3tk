@@ -18,6 +18,8 @@ class Order extends Model
         'address',
         'province',
         'orderId',
+        'size',
+        'color',
         'total_price',
     ];
 
