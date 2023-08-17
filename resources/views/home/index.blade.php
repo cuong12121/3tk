@@ -121,8 +121,8 @@
                                     
                                     <td width="130">{{ @$orders->created_at }}</td>
 
-                                    <td>{{ @$orders->color }}</td>
-                                    <td>{{ @$orders->size }}</td>
+                                    <td>{{  ($orders->options)['color']  }}</td>
+                                    <td>{{  (@$orders->options)['size'] }}</td>
 
                                     <td>{{ json_decode($orders->product)[$keys]->gift??'' }}</td>
                                     <td>{{str_replace(',' ,'.', number_format($orders->total_price)) }}</td>
