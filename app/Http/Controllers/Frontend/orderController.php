@@ -87,7 +87,7 @@ class orderController extends Controller
 
         }
 
-        dd($input);
+    
 
         $check = $order::create($input);
 
