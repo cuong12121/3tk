@@ -97,8 +97,12 @@
                                     <td width="40">STT</td>
                                     <td width="190">Khách hàng</td>
                                     <td width="100">Thời gian đặt hàng</td>
+                                    <td>Màu sản phẩm(nếu có) </td>
+
+                                    <td>Kích thước sản phẩm (nếu có) </td>
 
                                     <td width="130">Quà tặng của đơn hàng</td>
+
                                     <td>Giá trị đơn hàng</td>
                                     <td width="120">Xem chi tiết</td>
                                 </tr>
@@ -116,6 +120,9 @@
                                     <td width="190">{{ @$orders->name }}</td>
                                     
                                     <td width="130">{{ @$orders->created_at }}</td>
+
+                                    <td>{{ @$orders->color }}</td>
+                                    <td>{{ @$orders->size }}</td>
 
                                     <td>{{ json_decode($orders->product)[$keys]->gift??'' }}</td>
                                     <td>{{str_replace(',' ,'.', number_format($orders->total_price)) }}</td>
