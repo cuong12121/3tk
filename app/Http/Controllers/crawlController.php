@@ -82,15 +82,21 @@ class crawlController extends Controller
 
     public function addMetaPd()
     {
-        $product = product::select('Name', 'id')->get();
+        $group_product = groupProduct::select('name', 'id')->get();
 
-        foreach ($product as $key => $value) {
+        foreach ($group_product as $key => $value) {
 
             $meta = new metaSeo();
 
-            $meta->meta_title = $value->Name;
+            $meta->meta_title = $value->name;
 
             $meta->save();
+
+            $gproduct =  groupProduct::find($value->id);
+
+            $gproduct->Meta_id = $meta['id'];
+
+            $gproduct->save();
 
         }
 

@@ -9,9 +9,13 @@
             {{ $meta->meta_title??'Phân phối thiết bị Bảo Hộ Lao Động' }}   
         </title>
         <link rel="SHORTCUT ICON" href="images/ico.png">
-        <meta name="description" content="Chuyên phân phối, bán buôn bán lẻ các loại thiết bị bảo hộ lao động cao cấp dành cho các khu công nghiệp, công nhân nhà xưởng, công ty sản xuất">
-        <meta name="keywords" content="Phân phối thiết bị Bảo Hộ Lao Động">
-        <meta property="og:image" content="https://3tkshop.vn/images/logo-h.jpg">
+
+        <meta name="description" content="{{ $meta->meta_content??'Phân phối thiết bị Bảo Hộ Lao Động' }}">
+
+        <meta name="keywords" content="{{ $meta->meta_key_words??'Chuyên phân phối, bán buôn bán lẻ các loại thiết bị bảo hộ lao động cao cấp dành cho các khu công nghiệp, công nhân nhà xưởng, công ty sản xuất' }}">
+        @if(!empty($data) && !empty($data->Image))
+        <meta property="og:image" content="{{ asset($data->Image) }}"/>
+        @endif
         <meta property="og:image:type" content="image/jpeg">
         <link rel="canonical" href="index.htm">
         <meta name="author" content="3tkshop.vn/">
@@ -176,7 +180,7 @@
             else{
                  $nameRoute = '';
             }
-           
+
 
           ?>
     
