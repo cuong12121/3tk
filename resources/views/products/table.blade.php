@@ -124,7 +124,7 @@
                 thời gian update :{{ $product->updated_at->format('d/m/Y, H:i:s') }}
 
                 <br>
-                người update : {{ App\User::find($product->user_id)->name }} 
+                người update :
                 <br>
 
                 <?php 
