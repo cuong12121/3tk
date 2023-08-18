@@ -73,7 +73,14 @@ class groupProductController extends AppBaseController
 
         if(empty($input['link'])){
 
-            $input['link'] = convertSlug($input['name']);
+            $parent_link_id = '';
+
+            if($input['parent_id']>0){
+
+                $parent_link_id = '-'.$input['parent_id'];
+            }
+
+            $input['link'] = convertSlug($input['name']).$parent_link_id;
         }
 
         $meta_model = new metaSeo();
