@@ -243,9 +243,6 @@
               
                 <div class="btn-primary" onclick="flashOrderSale('{{ $product->id}}')"  id="sale_order_edit{{ $product->id }}">Sửa</div>
 
-
-               
-
             </td>
 
             <td><input type="checkbox" id="active{{ $product->id }}" name="active" onclick='active({{ $product->id }})'   {{ $product->active==1?'checked':'' }}></td>
@@ -326,13 +323,8 @@
                        
                 </select>
             </td>
-
-
-           
             <td>{{ $product->created_at->format('d/m/Y, H:i:s') }}</td>
-          
-
-            
+        
                 <td width="120">
                     {!! Form::open(['route' => ['products.destroy', $product->id], 'method' => 'delete']) !!}
                     <div class='btn-group' style="display:block;">
@@ -370,6 +362,8 @@
     </table>
 </div>
 
+
+{!! $products->links()   !!}
 <input type="hidden" name="product-click" id="product-click">
 <!-- Modal -->
 <div class="modal fade" id="modal-gift" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -466,19 +460,16 @@
 
 
  @if (session('success-promotion'))
+    <script type="text/javascript">
 
+        alert('{{ session("success") }}');
 
-        <script type="text/javascript">
+    </script>
+    <?php
+    Session::forget('success-promotion');
+    ?>
 
-            alert('{{ session("success") }}');
-
-        </script>
-        <?php
-        Session::forget('success-promotion');
-        ?>
-
-        
-    @endif
+@endif
 
 
 

@@ -749,7 +749,7 @@
                         <div class="img">
                             <a href="{{ route('details', $post[$i]['link']) }}" title="{{ $post[$i]['title'] }}">
                                 <div class="mobile-hide" style="height:80px; overflow:hidden;">
-                                    <img src="{{ $post[$i]['title'] }}" alt="" width="100%">
+                                    <img src="{{ $post[$i]['image'] }}" alt="" width="100%">
                                 </div>
                                 <div class="mobile-block" style="height:55px; overflow:hidden;">
                                     <img src="{{ asset($post[0]['image']) }}" alt="{{ $post[$i]['title'] }}" width="100%">

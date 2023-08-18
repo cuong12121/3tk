@@ -60,6 +60,48 @@ class crawlController extends Controller
         echo "thanh cong";
 
     }
+
+
+    public function addMetaId()
+    {
+        $product = product::select('id')->get();
+
+        foreach ($product as $value) {
+
+            $product_add = product::find($value->id);
+
+            $product_add->Meta_id = $value->id;
+
+            $product_add->save();
+
+        }
+
+        echo "thành công";
+    }
+
+
+    public function addMetaPd()
+    {
+        $product = product::select('Name', 'id')->get();
+
+        foreach ($product as $key => $value) {
+
+            $meta = new metaSeo();
+
+            $meta->meta_title = $value->Name;
+
+            $meta->save();
+
+        }
+
+        echo "thành công";
+
+    }
+
+
+
+
+
     public function sosanh()
     {
 
