@@ -5,8 +5,33 @@
     }
 
     .table td, .table th{
-        padding: 0 3.5px!important;
+        padding: 3.5px!important;
     }
+    .td-price{
+        width: 10%;
+    }
+    .btn-primary{
+        margin-top: 8px;
+    }
+    thead{
+        font-size: 14px;
+    }
+    .btn-group a, .btn-group .btn-danger{
+        font-size: 14px;
+    }
+    .btn-xs{
+        width: 45px;
+    }
+    .card-footer{
+        display: none;
+    }
+    .table:not(.table-dark) {
+
+        margin: 0;
+    }   
+    .date-created{
+        color: #000;
+    } 
 </style>
 
 <div class="table-responsive">
@@ -17,19 +42,19 @@
         <th>Tên sản phẩm</th>
         <th>Sửa nhanh</th>
         
-        <th>Số lượng trong kho</th>
-        <th>Hiển thị</th>
-        <th>chọn danh mục nhanh</th>
+        <th>Tồn kho</th>
+        <th>Sắp xếp</th>
+        <th>Show</th>
+        <!-- <th>chọn danh mục nhanh</th> -->
 
       
         <th>Tick sản phẩm</th>
        <!--  <th>Sản phẩm Sale</th>
         <th>Sản phẩm Mới</th> -->
         <th>Quà tặng</th>
-        <th>Ngày tạo</th>
-        @if(Auth::user()->id==4 || Auth::user()->id==6)
-        <th>Chênh lệch giá</th>
-        @endif
+       
+        <th><a href="#" class="date-created">Ngày tạo</a></th>
+      
         <th colspan="3">Action</th>
         </tr>
         </thead>
@@ -117,14 +142,14 @@
         @foreach($products as $product)
 
             <tr>
-                <td><img src="{{ asset($product->Image) }}" width="150px" height="150px"></td>
-            <td style="width: 400px;">
+                <td><img src="{{ asset($product->Image) }}" width="100px"></td>
+            <td style="width: 500px;">
                 <a href="{{ route('products.edit', [$product->id]) }}">{{ $product->Name }}</a>
                 <br>
-                thời gian update :{{ $product->updated_at->format('d/m/Y, H:i:s') }}
+                thời gian: {{ @$product->updated_at->format('d/m/Y, H:i:s') }}
 
                 <br>
-                người update :
+                update : {{ @App\User::find($product->user_id)->name }} 
                 <br>
 
                 <?php 
@@ -135,19 +160,65 @@
                 <a href="{{ route('view-history', $product->id) }}">xem lịch sử</a>
                 @endif
             </td>
-            <td width="100">
+            <td class="td-price">
                 
                 <label>Giá</label>
 
-                <div>
-                    <input type="" name="flashPrice" value="{{ @str_replace(',' ,'.', number_format($product->Price))}} " id="flashPrice{{$product->id}}">
+                <div style="width: 100%;">
+                    <input type="" name="flashPrice" value="{{ @str_replace(',' ,'.', number_format($product->Price))}} " id="flashPrice{{$product->id}}" style="width:100%">
                 </div>
 
-                <br>
+               
 
-                <div class="btn-primary" onclick="flashPrice('{{ $product->id}}')" id="prices_edit{{ $product->id }}">Sửa</div>
+                @if(!empty($product->id))
+
+                <div class="btn-primary" onclick="flashPrice('{{ $product->id}}')" id="prices_edit{{ $product->id }}" style="width:100%">Sửa</div>
+
+               
+                @endif
+
+                @if(!empty($product->id))
+
+                <?php
+
+                    $check_deal =  Cache::get('deals')->where('product_id', $product->id);
+
+                    $now = \Carbon\Carbon::now();
+                   
+                    if(!empty($check_deal)){
+
+
+                        $check_deal =  $check_deal->all();
+
+                        if(!empty($check_deal)){
+                            $check_deal = reset($check_deal);
+                        }
+
+                        $deal_check_add = false;
+                        
+                        
+                    }
+
+                ?>
+
+               
+                @if(!empty($check_deal) && !empty($check_deal->deal_price) && $check_deal->active==1)
+
+
+                @if($now->between($check_deal->start, $check_deal->end))
+                        
+                <label>Giá Deal</label>
+
+                <div style="width: 100%;">
+                    <input type="" name="flashPrice" value="{{ @str_replace(',' ,'.', number_format($check_deal->deal_price))}} " class="edit_price_deal{{ $check_deal->id }}" style="width:100%">
+                </div>
+
+                <div class="btn-primary" onclick="edit_price_deal({{ $check_deal->id }})" style="width:100%">Sửa</div>
 
                 <br>
+                @endif
+                @endif
+                @endif
 
             </td>
                   
@@ -156,9 +227,7 @@
                 <label>Sửa</label>
                 <input type="" name="qualtily" value="{{ $product->Quantily }}" id="qualtity{{ $product->id }}" style="width: 100%;">
 
-                <br>
-
-                <br>
+               
 
                 <div class="btn-primary" onclick="flashQualtily('{{ $product->id}}')"  id="qualtity_edit{{ $product->id }}">Sửa</div>
 
@@ -167,31 +236,45 @@
 
             </td>
 
+            <td style="width: 124px;">
+                <label>Sửa</label>
+                <input type="" name="sale_order" value="{{ $product->sale_order }}" id="sale_order{{ $product->id }}" style="width: 100%;">
+
+              
+                <div class="btn-primary" onclick="flashOrderSale('{{ $product->id}}')"  id="sale_order_edit{{ $product->id }}">Sửa</div>
+
+
+               
+
+            </td>
+
             <td><input type="checkbox" id="active{{ $product->id }}" name="active" onclick='active({{ $product->id }})'   {{ $product->active==1?'checked':'' }}></td>
 
-            <td><a href="{{ route('group-product-selected', $product->id) }}"class="btn-primary">Sửa</a></td>
-
-          
-
-            <td style="width:40%">
+        
+            <td style="width:20%">
                 <input type="checkbox" id="hot{{ $product->id }}" name="hot"  onclick='handleClick({{ $product->id }});' data-id ="{{ get_Group_Product($product->id)[0]??'' }}" {{ in_array($product->id, $list_hot)?'checked':'' }}>
-                Sản phẩm Show Home
+                S/P Show Home
 
                 <br>
 
                  <input type="checkbox" id="sale{{ $product->id }}" name="sale"  onclick='saleClick({{ $product->id }});' data-id ="{{ get_Group_Product($product->id)[0]??'' }}" {{ in_array($product->id, $list_sales)?'checked':'' }}>
-                 Sản phẩm Sale
+                 S/P Sale
                 <br> 
 
                 <input type="checkbox" id="new{{ $product->id }}" name="new"  onclick='newClick({{ $product->id }});' data-id ="{{ get_Group_Product($product->id)[0]??'' }}" {{ in_array($product->id, $list_new)?'checked':'' }}>
-                  Sản phẩm Mới
+                  S/P Mới
                   <br>
                 <input type="checkbox" id="hots{{ $product->id }}" name="hots"  onclick='hotClick({{ $product->id }});' data-id ="{{ get_Group_Product($product->id)[0]??'' }}" {{ in_array($product->id, $list_hots)?'checked':'' }}>
-                  Sản phẩm Hot
+                  S/P Hot
                 <br>
+
+                <input type="checkbox"  name="promotionClick" id="promotionClick{{ $product->id }}"  onclick='promotionClick({{ $product->id }});' data-id ="{{ get_Group_Product($product->id)[0]??'' }}" {{ $product->promotion_box==1?'checked':'' }}>
+                  Nhận K/M theo option chọn
+                <br>
+
                 <input type="checkbox" id="limit{{ $product->id }}" name="limit"  onclick="limit({{ $product->id }})" {{  $product->limits ==1?'checked':'' }}>
 
-                Sản phẩm số lượng có hạn
+                S/P số lượng có hạn
   
             </td>
             
@@ -226,57 +309,58 @@
 
             ?>
 
-
-            <td>
-                <select id="gift" onchange="add_gift_group({{ $product->id }})">
+            <td width="350">
+                <select id="gift{{ $product->id }}" onchange="add_gift_group({{ $product->id }})" style="width:100%">
                     <option value="0">Không chọn</option>
 
 
                     @if(isset($group_gift))
                     
                     @foreach($group_gift as $value)
-                    
-                    <option value="{{ $value->id }}" {{ $id_group_gift == $value->id?'selected':'' }} >{{ $value->group_name }}</option>
+
+
+                    <option data-id="{{ $id_group_gift }}" value="{{ $value->id }}" {{ $id_group_gift == $value->id?'selected':'' }} >{{ $value->group_name }}</option>
                     @endforeach
                     @endif
 
                        
                 </select>
             </td>
+
+
+           
             <td>{{ $product->created_at->format('d/m/Y, H:i:s') }}</td>
-            @if(Auth::user()->id==4 || Auth::user()->id==6)
-            <td>{{  str_replace(',' ,'.', number_format(intval($product->Price) - intval($product->InputPrice)))   }}</td>
-            @endif
+          
 
             
                 <td width="120">
                     {!! Form::open(['route' => ['products.destroy', $product->id], 'method' => 'delete']) !!}
                     <div class='btn-group' style="display:block;">
-                        <a href="{{ route('details', [$product->Link]) }}"
+                        <a href="{{ !empty($product->Link)?route('details', [$product->Link]):'' }}"
                            class='btn btn-default btn-xs' target="_blank">
-                            <i class="far fa-eye"></i>
+                            view
                         </a>
                         
                         <a href="{{ route('products.edit', [$product->id]) }}"
                            class='btn btn-default btn-xs'>
-                            <i class="far fa-edit"></i>
+                            sửa
                         </a>
                         
 
                          <a href="{{ route('images.create', [$product->id]) }}"
                            class='btn btn-default btn-xs'>
-                            <i class="fas fa-image"></i>
+                            ảnh
                         </a>
 
                         
 
                          <a href="{{ route('filter-property') }}?group-product={{ get_Group_Product($product->id)[0]??'' }}&productId={{ $product->id }}"
                            class='btn btn-default btn-xs'>
-                            <i class="fa fa-filter"></i>
+                           lọc
                         </a>
                         
 
-                        {!! Form::button('<i class="far fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
+                        {!! Form::button('xóa', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
                     </div>
                     {!! Form::close() !!}
                 </td>
@@ -381,6 +465,22 @@
 </div>
 
 
+ @if (session('success-promotion'))
+
+
+        <script type="text/javascript">
+
+            alert('{{ session("success") }}');
+
+        </script>
+        <?php
+        Session::forget('success-promotion');
+        ?>
+
+        
+    @endif
+
+
 
 <script type="text/javascript">
 
@@ -390,12 +490,7 @@
 
         $('#gift-product').text(title);
         $('#modal-gift').modal('show');
-
-       
-
     }
-
-
 
     function add_gift_group(product_id) {
 
@@ -413,7 +508,7 @@
             data: {
                 
                 product_id:product_id,
-                id_group_gift:$('#gift').val(),
+                id_group_gift:$('#gift'+product_id).val(),
                    
             },
             success: function(result){
@@ -465,6 +560,8 @@
         });
 
     }
+
+   
 
 
 
@@ -541,6 +638,8 @@
         });
        
     }
+
+   
 
     function saleClick(id) {
 
@@ -704,7 +803,28 @@
             }
         });
        
-    }   
+    }  
+
+
+    function edit_price_deal(id){
+        let val = $('.edit_price_deal'+id).val();
+        $.ajax({
+
+        type: 'GET',
+            url: "{{ route('editPricedeal') }}",
+            data: {
+                product_id:id,
+                val: val
+                
+            },
+            success: function(result){
+               window.location.reload();
+               
+            }
+        });
+
+    }
+ 
 
 
     function flashPrice(productId) {
