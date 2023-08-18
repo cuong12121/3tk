@@ -684,11 +684,12 @@ class categoryController extends Controller
 
         }
 
+        $show_more =  $datas->details??'';
 
         $data = post::where('category', $datas->id)->orderBy('date_post','desc')->orderBy('date_post','desc')->paginate(10);
 
       
-        echo view('frontend.blog', compact('data','name_cates_cate'));
+        echo view('frontend.blog', compact('data','name_cates_cate', 'show_more'));
 
         die();
 
