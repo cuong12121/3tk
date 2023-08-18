@@ -38,8 +38,24 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="clearfix pt-3">
                         </div>
+
+                        @if(!empty($show_more))
+
+                        <div class="row">
+                            <div class="col-12 col-md-12">
+
+                                {!!  $show_more   !!}
+                            </div>
+                        </div>        
+
+                        <div class="clearfix pt-3">
+                        </div>
+
+                        @endif
+
                         <div class="row">
                             <div class="col-12 col-md-12">
                                 <div class="row">
@@ -75,6 +91,8 @@
                                 </div>
                             </div>
                         </div>
+
+
                         <div class="clearfix pt-3">
                         </div>
                         <div class="row">
