@@ -20,7 +20,7 @@ class category extends Model
 
 
     public $fillable = [
-        'namecategory','link'
+        'namecategory','link','details'
     ];
 
     /**
