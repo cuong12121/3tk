@@ -14,6 +14,8 @@ For licensing, see LICENSE.html or https://ckeditor.com/sales/license/ckfinder
 </head>
 <body>
 
+	
+
 <script src="{{ asset('js/ckfinder.js') }}"></script>
 <script>
 	CKFinder.start();
